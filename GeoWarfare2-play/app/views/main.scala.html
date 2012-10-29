@@ -1,0 +1,133 @@
+@(title: String, scripts: Html = Html(""))(content: Html)
+<!DOCTYPE html>
+<html>
+<head>
+<title>GeoWarfare @title</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description"
+	content="Vous avez toujours rêvé de commander le monde, montrer à tous votre puissance ? Grâce à GeoWarfare dominez votre ville !" />
+<meta name="author" content="Clain and Galaad" />
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.css")" />
+<link rel="stylesheet" media="screen"
+	href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="stylesheet" href="@routes.Assets.at("stylesheets/nivo/default.css")"
+	type="text/css" media="screen" />
+<link rel="shortcut icon" type="image/png"
+	href="@routes.Assets.at("images/favicon.png")">
+<script src="@routes.Assets.at("javascripts/site.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery-1.6.2.js")"
+	type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/modernizr.js")"
+	type="text/javascript"></script>
+	@scripts
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta
+	content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no"
+	name="viewport" />
+<link href="@routes.Assets.at("images/favicon.png")" rel="apple-touch-icon" />
+<link href="@routes.Assets.at("images/mobile/splashscreen.png")"
+	rel="apple-touch-startup-image" />
+<meta name="application-name" content="GeoWarfare" />
+<meta name="msapplication-tooltip"
+	content="GeoWarfare, jeu mobile de conquête de secteur par géolocalisation" />
+<meta name="msapplication-starturl" content="http://www.geowarfare.net" />
+<meta name="msapplication-window" content="width=1024;height=768" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="@routes.Assets.at("images/favicon.ico")" />
+</head>
+<body>
+	<header>
+		<div id="headerWhite">
+			<div id="headerContent">
+				<a href="/"><img src="@routes.Assets.at("images/logos/textualLogo.png")"
+					alt="GeoWarfare" id="headerLogo" /></a>
+				<ul>
+					<li><a href="/"><img
+							src="@routes.Assets.at("images/metro/home.png")" alt="Home" /><br />Le jeu</a></li>
+					<li><a href="/gallery"><img
+							src="@routes.Assets.at("images/metro/gallery.png")" alt="Galerie" /><br />Galerie</a></li>
+					<li><a href="/news"><img
+							src="@routes.Assets.at("images/metro/news.png")" alt="News" /><br />News</a></li>
+					<li><a href="/register"><img
+							src="@routes.Assets.at("images/metro/inscription.png")" alt="Inscription" /><br />Inscription</a></li>
+					<li><a href="/game"><img
+							src="@routes.Assets.at("images/metro/connexion.png")" alt="Connexion" /><br />Connexion</a></li>
+					<li class="aide"><a href="/help"><img
+							src="@routes.Assets.at("images/metro/aide.png")" alt="Aide" /><br />Aide</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="headerBlack"></div>
+	</header>
+	<!-- <section id="main">-->
+
+	<section id="mainContent" class="container">
+		<div class="row-fluid">
+			<div id="sidebar" class="span3">
+				<div id="sidebarColorBar"></div>
+				<h2>
+					<a href="/download">T&eacute;l&eacute;charger</a>
+				</h2>
+				<br />
+				<br />
+				<div class="linkBrand">
+					<a
+						href="http://play.google.com/store/apps/details?id=com.aerilys.geowarfare.android"
+						target="_blank"> <img
+						src="http://www.android.com/images/brand/android_app_on_play_logo_large.png"
+						alt="Disponible sur Google Play !" id="androidMarketImg" /></a>
+				</div>
+				<br /> <a
+					href="http://www.windowsphone.com/fr-FR/apps/60574c6a-4aa1-4c60-a323-2cd094f24186"
+					target="_blank"><div class="logoBrand" id="WPBrand"></div></a> <br />
+				<br />
+				<div class="well">
+					<a href="/platform"> <img
+						src="@routes.Assets.at("images/icons/androide.png")" alt="Ready for ICS" />
+						<p style="margin-top: -10px;">Choisissez votre plateforme</p>
+					</a>
+				</div>
+				<div class="well">
+					<a href="/world"> <img
+						src="@routes.Assets.at("images/metro/noun_compass.png")"
+						alt="World is yours" />
+						<p style="margin-top: -10px;">Jouez dans le monde entier</p>
+					</a>
+				</div>
+				<div class="well">
+					<a href="https://twitter.com/GeoWarfare" target="_blank"> <img
+						src="@routes.Assets.at("images/social/Twitter100.png")"
+						alt="Suivez-nous sur Twitter !" />
+						<p style="margin-top: -10px;">Suivez-nous sur Twitter !</p>
+					</a>
+				</div>
+				<div class="well">
+					<a href="https://plus.google.com/104200127896865830935/posts"
+						target="_blank"> <img
+						src="@routes.Assets.at("images/social/GP64.png")"
+						alt="Suivez-nous sur Google+ !" />
+						<p style="margin-top: -10px;">Rejoignez-nous sur Google+ !</p>
+					</a>
+				</div>
+				<div class="well">
+					<a href="https://www.facebook.com/GeoWarfare" target="_blank">
+						<img src="@routes.Assets.at("images/social/facebook.png")"
+						alt="Rejoignez-nous sur Facebook !" />
+						<p style="margin-top: -10px;">Rejoignez-nous sur Facebook !</p>
+					</a>
+				</div>
+			</div>
+			<div id="content" class="span9">@content</div>
+			<div class="gb"></div>
+			<br />
+		</div>
+	</section>
+	<footer>
+		GeoWarfare 2011-2012 - <a href="/about">A Propos</a> - <a
+			href="/cgu">CGU</a> - <a href="https://twitter.com/Aerilys"
+			target="_blank">&#64;Aerilys</a> - <a
+			href="https://twitter.com/Flo_rousselet" target="_blank">Flo_rousselet</a>
+	</footer>
+</body>
+</html>

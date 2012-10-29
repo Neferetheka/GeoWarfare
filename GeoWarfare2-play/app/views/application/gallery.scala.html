@@ -1,0 +1,20 @@
+@(message: String) @main("") {
+<h1>Galerie</h1><br/>
+<div class="slider-wrapper theme-default">
+	<div class="ribbon"></div>
+	<div id="slider" class="nivoSlider">
+	    <img src="@routes.Assets.at("images/logos/diaporama.jpg")" alt="GeoWarfare" data-transition="slideInLeft"/>
+	    <img src="@routes.Assets.at("images/screens/Android6.jpg")" alt="Screen 1" title="Vue g&eacute;n&eacute;rale du QG" />
+	    <img src="@routes.Assets.at("images/screens/Android7.jpg")" alt="Screen 2" title="Certains succ&egrave;s sont cach&eacute;s ! Saurez-vous les trouver ?"/>
+	    <img src="@routes.Assets.at("images/screens/Android8.jpg")" alt="Screen 3" title="Ce secteur est d&eacute;j&agrave; d&eacute;tenu par un autre joueur. Oserez-vous l'attaquer ?" />
+	    <img src="@routes.Assets.at("images/screens/Android11.jpg")" alt="Screen 4" title="Jouez &agrave; GeoWarfare depuis votre Android" />
+	    <img src="@routes.Assets.at("images/screens/WP72.jpg")" alt="Screen 4" title="L'application Windows Phone 7 offre une exp&eacute;rience fluide et agr&eacute;able &agrave; tous les g&eacute;n&eacute;raux !" />
+	</div>
+</div>
+ <script type="text/javascript" src="@routes.Assets.at("javascripts/jquery.nivo.slider.min.js")"></script>
+ <script type="text/javascript">
+$(window).load(function() {
+    $('#slider').nivoSlider({pauseTime: 5000});
+});
+</script>
+}

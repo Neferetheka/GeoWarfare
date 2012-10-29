@@ -1,0 +1,28 @@
+@(player: Player, success:Success) @main(" - Profil") {
+<h1>Profil de @player.login</h1>
+<br />
+<img src="/assets/gfx/Success/@(success.nom.replace(' ', '_')).png" alt="Succes"
+	class="left successImg" />
+<div style="float: left; margin-left: 25px;">
+	@player.login a d&eacute;bloqu&eacute; le succ&egrave;s <strong>@success.nom</strong>
+	<br/><strong>Objectif : </strong>
+	@success.objectif
+</div>
+<div class="gb"></div>
+<br />
+<br />
+<em>@success.description</em>
+<br />
+<br />
+<button type="button" value="Partager sur Facebook" class="btn"
+	onclick="shareClick('@player.login a d&eacute;bloqu&eacute; le succ&egrave;s @success.nom', 2);">
+	<img style="width: 16px" src="/assets/images/social/facebook.png"
+		alt="Facebook" /> Partager
+</button>
+<button type="button" value="Partager sur Twitter" class="btn"
+	onclick="shareClick('@player.login a d&eacute;bloqu&eacute; le succ&egrave;s @success.nom', 1);">
+	<img style="width: 16px" src="/assets/images/social/Twitter32.png"
+		alt="Twitter" /> Tweeter
+</button>
+
+}

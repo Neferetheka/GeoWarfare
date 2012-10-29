@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GeoWarfare</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="description"
+	content="Vous avez toujours rêv&eacute; de commander le monde ? montrez à tous votre puissance et grâce à GeoWarfare, dominez votre ville !">
+<meta name="author" content="Aerilys">
+<link rel="shortcut icon" type="image/png"
+	href="/public/images/favicon.png">
+<link rel="stylesheet"
+	href="/public/stylesheets/jquery.mobile-1.1.0.min.css" />
+<link rel="stylesheet" href="/public/stylesheets/mobile.css" />
+<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script src="public/javascripts/mobile.js"></script>
+<!-- <script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkCXN7QHbizpw38dE_XRl5Vt_dGUqKBYM&sensor=true"></script>-->
+<meta content="yes" name="apple-mobile-web-app-capable" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/public/images/favicon.png" rel="apple-touch-icon" />
+<link href="/public/images/mobile/splashscreen.png"
+	rel="apple-touch-startup-image" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="/public/images/favicon.ico">
+</head>
+
+<body>
+	<div data-role="page" id="connexion">
+		<div data-theme="a" data-role="header">
+			<h3>Geowarfare</h3>
+
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<label for="connexionPseudo"> Pseudo </label> <input
+						id="connexionPseudo" placeholder="Pseudo"
+						type="text" />
+				</fieldset>
+			</div>
+			<div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<label for="connexionPassword"> Mot de passe </label> <input
+						id="connexionPassword" type="password" />
+				</fieldset>
+			</div>
+			<input type="button" data-theme="b" data-icon="check"
+				onclick="launchAuth();" data-iconpos="left" value="Valider" /> <a
+				href="/inscription" target="_blank" data-theme="a"
+				data-role="button">Inscription</a>
+
+		</div>
+		<div data-theme="a" data-role="footer" data-position="fixed">
+			<h3>Aerilys 2012</h3>
+		</div>
+	</div>
+	<div data-role="page" id="home">
+		<div data-theme="a" data-role="header">
+			<h3>GeoWarfare</h3>
+			<a href="#map" data-icon="check" class="ui-btn-right" data-theme="b"
+				onclick="nativeLocation();">Check in</a>
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#home" data-theme="b" data-icon="star"> Mon
+							profil </a></li>
+					<li><a href="#army" data-theme="" data-icon="gear">
+							Arm&eacute;es </a></li>
+					<li><a href="#secteurs" data-theme="" data-icon="grid">
+							Secteurs </a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<img src="http://codiqa.com/static/images/v2/image.png" alt="Avatar"
+				id="homeAvatar" class="avatar" />
+			<div style="float: left; margin-left: 10px;">
+				<h2 id="homePseudo"></h2>
+				<span id="homeBiographie"></span>
+			</div>
+			<div class="gc"></div>
+			<ul data-role="listview" data-divider-theme="b" data-inset="true">
+				<li data-role="list-divider" role="heading">Succ&egrave;s</li>
+				<li data-theme="c"><a href="#success" data-transition="slide">
+						Consulter </a></li>
+				<li data-theme="c"> Nombre de succ&egrave;s <span
+						class="ui-li-count" id="homeNbSuccess"></span></li>
+			</ul>
+			<ul data-role="listview" data-divider-theme="b" data-inset="true">
+				<li data-role="list-divider" role="heading">Messages</li>
+				<li data-theme="c"><a href="#messagerie" data-transition="slide" onclick="loadMessages();">
+						Consulter </a></li>
+			</ul>
+			<ul data-role="listview" data-divider-theme="b" data-inset="true">
+				<li data-role="list-divider" role="heading">Statistiques</li>
+				<li data-theme="c">Nombre de secteurs <span
+						class="ui-li-count" id="homeNbSecteurs"></span></li>
+				<li data-theme="c">Total de secteurs
+						visit&eacute;s <span class="ui-li-count" id="homeVisitedSecteurs">0</span>
+				</li>
+				<li data-theme="c">Total d'unit&eacute;s
+						tu&eacute;es <span class="ui-li-count" id="homeKilledUnits"></span>
+				</li>
+			</ul>
+			<!-- <div data-role="fieldcontain">
+				<fieldset data-role="controlgroup">
+					<label for="textinput4"> Rechercher un joueur </label> <input
+						id="textinput4" placeholder="Pseudo" value="" type="text" />
+				</fieldset>
+			</div>
+			<input type="submit" data-theme="b" data-icon="search"
+				data-iconpos="left" value="Rechercher" />-->
+		</div>
+	</div>
+	<div data-role="page" id="army">
+		<div data-theme="a" data-role="header">
+			<h3>GeoWarfare</h3>
+			<a href="#map" data-icon="check" class="ui-btn-right" data-theme="b"
+				onclick="nativeLocation();">Check in</a>
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#home" data-icon="star"> Mon profil </a></li>
+					<li><a href="#army" data-theme="b" data-theme=""
+						data-icon="gear"> Arm&eacute;es </a></li>
+					<li><a href="#secteurs" data-theme="" data-icon="grid">
+							Secteurs </a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="armyListview">
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="secteurs">
+		<div data-theme="a" data-role="header">
+			<h3>GeoWarfare</h3>
+			<a href="#map" data-icon="check" class="ui-btn-right" data-theme="b"
+				onclick="nativeLocation();">Check in</a>
+			<div data-role="navbar" data-iconpos="top">
+				<ul>
+					<li><a href="#home" data-icon="star"> Mon profil </a></li>
+					<li><a href="#army" data-theme="" data-icon="gear">
+							Arm&eacute;es </a></li>
+					<li><a href="#secteurs" data-theme="b" data-icon="grid">
+							Secteurs </a></li>
+				</ul>
+			</div>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="secteursListview">
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="detailsSecteur">
+		<div data-theme="a" data-role="header">
+			<h3>Secteurs</h3>
+			<a data-icon="back" data-rel="back">Retour</a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="detailsSecteurListview">
+			</ul>
+			<a data-icon="check" data-theme="b" data-role="button" href="#"
+				onclick="detailsSecteurValid();">Valider</a>
+		</div>
+	</div>
+	<div data-role="page" id="map">
+		<div data-theme="a" data-role="header">
+			<a data-role="button" data-direction="reverse" data-rel="back"
+				data-transition="fade" data-icon="back" data-iconpos="left">
+				Retour </a>
+			<h3>Carte</h3>
+			<a data-role="button" data-transition="fade" data-theme="b" href="#"
+				data-icon="refresh" data-iconpos="left" onclick="nativeLocation();">
+				Rafraichir </a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<img
+				src="https://maps.googleapis.com/maps/api/staticmap?center=Paris&amp;zoom=14&amp;size=288x200&amp;markers=Paris&amp;sensor=false"
+				id="googleMap" onclick="checkinClick();" width="288" height="200" />
+		</div>
+	</div>
+	<div data-role="page" id="conquete">
+		<div data-theme="a" data-role="header">
+			<a data-role="button" data-direction="reverse" data-rel="back"
+				data-transition="fade" " data-icon="back" data-iconpos="left">Retour</a>
+			<h3>Carte</h3>
+			<a data-role="button" data-transition="fade" data-theme="b" href="#"
+				data-icon="check" data-iconpos="left"
+				onclick="conquestValidClick();"> Attaquer !</a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="conqueteListview">
+			</ul>
+			<label for="conqueteIntensite" class="select">Intensit&eacute;
+				du combat</label> <select name="conqueteIntensite" id="conqueteIntensite">
+				<option value="0">Diversion</option>
+				<option value="1" selected="selected">Attaque standard</option>
+				<option value="2">Assaut frontal</option>
+				<option value="3">Attaque totale</option>
+			</select>
+		</div>
+	</div>
+	<div data-role="page" id="resultConquest">
+		<div data-theme="a" data-role="header">
+			<a data-role="button" data-direction="reverse" href="#home"
+				data-transition="fade" " data-icon="back" data-iconpos="left">Retour</a>
+			<h3 id="resultConquestTitle">Result</h3>
+			<a data-role="button" data-transition="fade" data-theme="b" href="#"
+				data-icon="check" data-iconpos="left"
+				onclick="conquestValidClick();"> Partager !</a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<p id="resultConquestLabel"></p>
+			<h2>Pertes de l'attaquant</h2>
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="attackerListview">
+			</ul>
+			<h2>Pertes du d&eacute;fenseur</h2>
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="opponentListview">
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="success">
+		<div data-theme="a" data-role="header">
+			<h3>Succ&egrave;s</h3>
+			<a data-icon="back" data-rel="back">Retour</a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="successListview">
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="detailSuccess">
+		<div data-theme="a" data-role="header">
+			<a data-role="button" data-direction="reverse" data-rel="back"
+				data-transition="slideup" data-icon="back" data-iconpos="left">
+				Retour </a> <a data-role="button" data-transition="fade" data-theme="b"
+				onclick="shareSuccess();" data-icon="arrow-r" data-iconpos="left">
+				Partager </a>
+			<h3 id="detailsSuccessTitle"></h3>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<div>
+				<img src="http://codiqa.com/static/images/v2/image.png" alt="succes"
+					class="left" id="detailsSuccessImage" /> <span
+					id="detailsSuccessDescription" class="left pad10"></span>
+			</div>
+			<div class="gc"></div>
+			<br />
+			<div id="detailsSuccessObjectif">Objectif :</div>
+		</div>
+	</div>
+	<div data-role="page" id="messagerie">
+		<div data-theme="a" data-role="header">
+			<h3>Messagerie</h3>
+			<a data-icon="back" data-rel="back"
+				>Retour</a>
+				<a data-role="button" data-transition="slideup" data-theme="b"
+				onclick="writeMessage();" data-icon="plus">
+				R&eacute;diger</a>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<ul data-role="listview" data-divider-theme="b" data-inset="true"
+				id="messagerieListview">
+			</ul>
+		</div>
+	</div>
+	<div data-role="page" id="detailsMessagerie">
+		<div data-theme="a" data-role="header">
+			<a data-role="button" data-direction="reverse" data-rel="back"
+				data-transition="slideup" data-icon="back" data-iconpos="left">
+				Retour </a> <a data-role="button" data-transition="slideup" data-theme="b"
+				onclick="answerMessage();" data-icon="forward">
+				R&eacute;pondre </a>
+			<h3 id="detailsMessagerieTitle"></h3>
+		</div>
+		<div data-role="content" style="padding: 15px">
+			<div id="detailsMessagerieContent"></div>
+			<br/>
+			<div id="detailsMessagerieDate" style="font-size:small; font-style:italic;"></div>
+		</div>
+	</div>
+	  <div data-role="page" id="messagerieWriter">
+            <div data-theme="a" data-role="header">
+                <a data-role="button" data-direction="reverse" data-rel="back" data-transition="slideup" href="#success" data-icon="back" data-iconpos="left">
+                    Retour
+                </a>
+                <h3>
+                    Message
+                </h3>
+            </div>
+            <div data-role="content" style="padding: 15px">
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="messagerieWriterDestinataire">
+                            Destinataire
+                        </label>
+                        <input id="messagerieWriterDestinataire" placeholder="Destinataire" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="messagerieWriterSubject">
+                            Sujet
+                        </label>
+                        <input id="messagerieWriterSubject" placeholder="Sujet" type="text" />
+                    </fieldset>
+                </div>
+                <div data-role="fieldcontain">
+                    <fieldset data-role="controlgroup">
+                        <label for="messagerieWriterContent">
+                            Message
+                        </label>
+                        <textarea id="messagerieWriterContent" placeholder="J'apprécie les fruits au sirop">
+                        </textarea>
+                    </fieldset>
+                </div>
+                <a data-icon="forward" data-theme="b" data-role="button" href="#" 
+				onclick="sendMessage();">Envoyer</a>
+            </div>
+        </div>
+	<div data-role="page" id="dialogSecteur">
+		<div data-role="header" data-theme="a">
+			<h1 id="dialogSecteurTitle"></h1>
+		</div>
+
+		<div data-role="content">
+			<p id="dialogSecteurContent"></p>
+			<br />
+			<div data-role="controlgroup">
+				<a data-role="button" data-theme="b"
+					onclick="detailsSecteurClick();" id="dialogSecteurDetailsButton"
+					class="hidden">Détails</a> <a data-role="button" data-theme="b"
+					class="hidden" onclick="detailsSecteurClick();"
+					id="dialogSecteurConquestButton">Conqu&eacute;rir</a> <a
+					data-role="button" data-rel="back">Fermer</a>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+</html>

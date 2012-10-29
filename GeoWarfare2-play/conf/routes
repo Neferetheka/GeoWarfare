@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+GET 	/download					controllers.Application.download()
+GET 	/about						controllers.Application.about()
+GET 	/cgu						controllers.Application.cgu()
+GET 	/help						controllers.Application.help()
+GET 	/gallery					controllers.Application.gallery()
+GET 	/platform					controllers.Application.platform()
+GET 	/register					controllers.Application.register()
+GET 	/news						controllers.Application.news()
+GET 	/world						controllers.Application.world()
+GET 	/profile					controllers.Application.profile(p:String)
+
+#API
+GET 	/API/auth					controllers.API.auth(p:String, md:String)
+GET 	/API/disconnect				controllers.API.disconnect(key:String)
+GET 	/API/checkin				controllers.API.checkin(key:String, lon:String, lat:String, a:String, venueName:String, venueId:String, cityName:String, venueType:String)
+GET		/API/putArmy				controllers.API.putArmy(key:String, venueId:String, units:Long)
+GET 	/API/battle					controllers.API.battle(key:String, venueId:String, units:Long)
+GET 	/API/getProfile				controllers.API.getProfile(key:String)
+GET 	/API/getArmy				controllers.API.getArmy(key:String)
+GET		/API/getGeoEvents			controllers.API.getGeoEvents(key:String)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

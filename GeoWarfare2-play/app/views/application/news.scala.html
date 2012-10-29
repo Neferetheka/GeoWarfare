@@ -1,0 +1,30 @@
+@(newsList: List[News]) @main("") {
+<h1>News</h1>
+<br />
+
+@for(item <- newsList){
+	<article class="presentationBloc">
+		<img src="${item.PathImage}"
+			alt="Achievement unlocked : know how to read alt text" />
+		<h2>@item.title</h2>
+		@item.content
+		<br/><br/>
+		<p class="grayColorText" style="font-style:italic;">Publi&eacute; par @item.author le @item.datePublication</p>
+		<hr />
+	</article>
+}
+
+@*
+  #{list items:listNews, as:'item'}
+	<article class="presentationBloc">
+		<img src="${item.PathImage}"
+			alt="Achievement unlocked : know how to read alt text" />
+		<h2>${item.Title.raw()}</h2>
+		${item.Content.raw()}
+		<br/><br/>
+		<p class="grayColorText" style="font-style:italic;">Publi&eacute; par ${item.Author} le ${item.DatePublication.format('dd MMMM yyyy', 'fr')}</p>
+		<hr />
+	</article>
+  #{/list}
+  *@
+}

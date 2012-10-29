@@ -1,0 +1,354 @@
+﻿<SuccessSet>
+	<Success>
+		<Id>0</Id>
+		<Nom>Petit Scarabée</Nom>
+		<Description>Ca y est mon général, vous avez obtenu votre première promotion !</Description>
+		<Objectif>Réaliser votre premier check-in</Objectif>
+		<isHidden>false</isHidden>
+		<isElite>false</isElite>
+		<ptsRecompense>5</ptsRecompense>
+	</Success>
+    <Success>
+        <Id>1</Id>
+        <Nom>Vindicator</Nom>
+        <Description>Un jour, le monde tremblera devant votre puissance et vos innombrables régiments de soldats ! Oui mon général, c'est beau de rêver !</Description>
+        <Objectif>Réaliser votre première conquête</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>2</Id>
+        <Nom>Top Gun</Nom>
+        <Description>Si vous vous demandez qui sont les meilleurs mon général, il vous suffit de consulter la liste de vos pilotes. Ils viennent tous de la meilleure école du monde !</Description>
+        <Objectif>Avoir votre premier avion</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>3</Id>
+        <Nom>Supercopter</Nom>
+        <Description>Nul doute que les hélicoptères sont une force armée conséquente ! Plus encore lorsqu'ils se cachent dans les montagnes et sont encore à l'état de prototype. Comment ça je regarde trop de série mon général ?</Description>
+        <Objectif>Avoir votre premier hélicoptère</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>4</Id>
+        <Nom>Le Chiffre</Nom>
+        <Description>D'une précision chirurgicale, vous frappez vos ennemis au coeur même de leurs forteresses, usant de 7 uniques valeureux combattants. Une sorte de suite des 7 mercenaires, des 7 samourais, des 7 chevaliers, des 7 hommes-rats, des 7 sushis de chez mamie Chang...</Description>
+        <Objectif>Vaincre avec 7 unités</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>5</Id>
+        <Nom>L'union fait la force</Nom>
+        <Description>Pour conquérir le monde, vous devrez compter sur des alliés puissants et sages. Oui mon général, bien entendu, c'est vous le plus sage de tous !</Description>
+        <Objectif>Rejoindre une alliance</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>6</Id>
+        <Nom>Cartographe</Nom>
+        <Description>Vous avez déjà entamé votre exploration ! Vous n'êtes plus un débutant mon général, mais un petit explorateur en herbe, qui a montré qu'il avait du potentiel. En récompense, voici un guide du Castor Junior !</Description>
+        <Objectif>Explorer 10 secteurs</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>7</Id>
+        <Nom>Tel Rousseau</Nom>
+        <Description>A l'instar du célèbre explorateur Rousseau, vous avez voyagé bien plus que la plupart de vos concitoyens. Véritable aventurier, vous parcourez les mers et les secteurs avec facilité. Et qui sait, peut-être écrira-t-on votre nom sur un monument un jour !</Description>
+        <Objectif>Explorer 100 secteurs</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>30</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>8</Id>
+        <Nom>La Ville Des Lumières</Nom>
+        <Description>Resplendissante cité que Paris ! Fief des Francs, royaume de la Tour Eiffel, chasse gardée des artistes de tout temps, y posséder un lopin de terre est signe de grande richesse. Nul doute que vous saurez préserver vos domaines parisiens comme s'il s'agissait de joyaux !</Description>
+        <Objectif>Posséder un secteur à Paris</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>9</Id>
+        <Nom>Voyageur de la Fédération</Nom>
+        <Description>Pas encore disponible. La Fédération vous remercie de votre service ! Grâce à vous, une exploration détaillée à pu être réalisée, de nouvelles espèces ont été découvertes, et la paix règne sur la galaxie ! Comment ça je me prends pour George Takei ?</Description>
+        <Objectif>Possèder des secteurs dans trois villes différentes</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>10</Id>
+        <Nom>Cercle Plus</Nom>
+        <Description>Pas encore disponible. Vos amis sont aussi nos amis ! Invitez-les à jouer, ils pourront ainsi vous aider, et peut-être même rejoindre votre alliance. Oui mon général, vous pourrez aussi les trahir...</Description>
+        <Objectif>Inviter trois amis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>11</Id>
+        <Nom>I was here</Nom>
+        <Description>C'est une très bonne idée de partager votre position avec vos amis mon général ! C'est encore plus drôle si vos ennemis ont l'information eux aussi et viennent vous déloger. Tiens, j'entends déjà les avions qui arrivent !</Description>
+        <Objectif>Partager votre position</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>12</Id>
+        <Nom>Alpiniste</Nom>
+        <Description>Comme disait maître Rébuffat, l'alpiniste est un homme qui conduit son corps là où un jour, ses yeux ont regardé. Comment ça, vous ne connaissez pas Maître Rébuffat ?</Description>
+        <Objectif>Faire un check-in à plus de 1000m d'altitude</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>13</Id>
+        <Nom>Conquérant</Nom>
+        <Description>Votre domination est sans limites ! Bientôt, le pays, et le monde, seront à vous mon général ! Vous cirer les pompes mon général ? Mais non mon général ! Jamais !</Description>
+        <Objectif>Posséder 11 secteurs</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>14</Id>
+        <Nom>Maître de l'Univers</Nom>
+        <Description>A l'instar de Musclor, vous êtes desormais un véritable héros ! Bon, vous n'avez pas d'épée magique, ni muscles saillants, mais vous êtes super classe quand même mon général !</Description>
+        <Objectif>Posséder 25 secteurs</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>30</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>15</Id>
+        <Nom>Bomberman</Nom>
+        <Description>Vous connaissez Bomberman mon général ? Vous savez, ce jeu où l'on pose des bombes et explose son adversaire ! Oui, moi aussi, j'adore le bruit des explosions de nos artilleurs la nuit...</Description>
+        <Objectif>Avoir plus de 50 artilleurs en réserve</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>16</Id>
+        <Nom>La ville des chateaux</Nom>
+        <Description>Il est une ville, non loin de la Capitale, qui par sa renommée et son histoire, rayonne plus que toute autre. Tours, terre où il fait bon vivre, vous offre ses vins savoureux, ses chateaux redoutables, et ses célèbres rillettes !</Description>
+        <Objectif>Avoir au moins un secteur à Tours</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>17</Id>
+        <Nom>Web Gamer</Nom>
+        <Description>Vous aimez jouer sur des OS abandonnés, des tablettes plus vendues, et avec des ipk non certifiés ? Si oui, alors vous êtes un Web Gamer, un vrai !</Description>
+        <Objectif>Jouer sur WebOS</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>18</Id>
+        <Nom>Redmond Gamer</Nom>
+        <Description>Depuis l'aube des temps, Bill et Steve sont de grands amis. Mais derrière leur amitié, se cache une rivalité terrible. Depuis des décennies, le clan des pommes, et celui des fenêtres, se battent sans relâche pour la gloire et le pouvoir ! Aujourd'hui, vous avez décider d'apporter votre contribution à la réussite de Bill ! Promis, il viendra vous percer des fenêtres vers la liberté. Et vous ne payerez rien, même pas la franchise !</Description>
+        <Objectif>Jouer sur Windows Phone 7</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>19</Id>
+        <Nom>Androide</Nom>
+        <Description>Nous sommes venus en paix et avec bienveillance ! Un robot ne peut blesser un être humain ou, par son inaction, permettre qu'un être humain soit blessé. Les robots ont vu des choses que vous ne pourriez pas croire.
+</Description>
+        <Objectif>Jouer sur Android</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>20</Id>
+        <Nom>Proud To Be Geek</Nom>
+        <Description>"M. Spock ne pilotait pas le vaisseau Enterprise. Il était officier scientifique. Et s'il avait vu le voyant moteur allumé, il aurait rabattu le vaisseau sur le bas-côté." - Sheldon Cooper, The Big Bang Theory</Description>
+        <Objectif>Débloquer les succès Androide, Web Gamer et Redmond Gamer</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>21</Id>
+        <Nom>Gamer</Nom>
+        <Description>Mais vous êtes un vrai no-life ! 10 succès ? Déjà ! J'espère que vous n'allez pas vous arrêter là !</Description>
+        <Objectif>Avoir 10 succès</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+    <Success>
+        <Id>22</Id>
+        <Nom>Lord of GeoWarfare</Nom>
+        <Description>Vous êtes l'un des maîtres inconstestés de ce monde mon général ! Toutes les promotions militaires de l'année veulent même porter votre nom ! C'est un signe, non ?</Description>
+        <Objectif>Avoir 25 succès</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>30</ptsRecompense>
+    </Success>
+	  <Success>
+        <Id>23</Id>
+        <Nom>Noctambule</Nom>
+        <Description>Vous rôdez la nuit dans de sombres recoins. Les ténèbres sont vos amies les plus chères, et les ombres sont vos alliés. Méfiez-vous, marcheur du soir, car nul ne sait ce que l'on peut croiser au détour d'un réverbère...</Description>
+        <Objectif>Conquérir un secteur entre 1h et 5h du matin</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>24</Id>
+        <Nom>Traitre</Nom>
+        <Description>Pas encore disponible</Description>
+        <Objectif>Donut</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>25</Id>
+        <Nom>Incident nucléaire</Nom>
+        <Description>Bon sang mon général, vous venez de lancer l'une des plus énormes offensives de toute l'histoire de l'Humanité. J'ose espérer que le bunker est enterré assez profond.</Description>
+        <Objectif>Attaquer avec plus de 500 de potentiel</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>35</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>26</Id>
+        <Nom>La Clef</Nom>
+        <Description>Do You See The Light ?</Description>
+        <Objectif>Si vous l'avez trouvé, déjà vous savez !</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>25</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>27</Id>
+        <Nom>Fantôme</Nom>
+        <Description>Au royaume des ombres, il en est une qui est plus redoutable que toutes les autres. Celle qui s'insinue au coeur de la nuit pour fondre sur ses ennemis, dévorant l'âme des soldats et dédaignant tout art de combat. Cette Ombre... Peut-être est-ce vous...</Description>
+        <Objectif>Conquérir un territoire entre 2h et 3h du matin</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>35</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>28</Id>
+        <Nom>Chat Bot</Nom>
+        <Description>Mon général, le département IT m'informe que vous prenez toute la bande passante avec vos messages. Les IT ? Mais si, vous savez, les barbus du 4ème sous-sol. Réponse standard ? On s'en fiche ?</Description>
+        <Objectif>Avoir envoyé au moins 100 messages</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>29</Id>
+        <Nom>La Réponse</Nom>
+        <Description>Avez-vous vraiment réponse à tout ? Mais bien sûr que oui, puisque vous avez la science infuse mon général ! Vous connaissez La Réponse Universelle, celle qui débloque toutes les serrures du monde ! Le sens de la vie, tout ça... Ou alors la question n'était pas bonne ?</Description>
+        <Objectif>Attaquer avec 42 unités</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>30</Id>
+        <Nom>Heart</Nom>
+        <Description>Quoi de plus beau à offrir à votre bien-aimée qu'un petit secteur en signe d'amour ? Lancez-vous à la conquête des étoiles en son nom, et elle aura la plus belle Saint-Valentin de toute sa vie !</Description>
+        <Objectif>Jouer le jour de la Saint-Valentin</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>31</Id>
+        <Nom>Biohazard</Nom>
+        <Description>Bon sang mon général, vous avez vue la violence de votre attaque. Vous n'y êtes pas allé de main morte ! A mon avis elle va rester gravée dans les mémoires celle-là. On pourrait en faire un film même, non ? J'appelle Steven !</Description>
+        <Objectif>Anéantir plus de 100 unités en une attaque</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>25</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>32</Id>
+        <Nom>Monopoly</Nom>
+        <Description>Vous aussi mon général, quand vous étiez jeune, vous ne vouliez que les gares au Monopoly ? Et bien, cette fois-ci, vous les avez vos gares ! Et sur un Monopoly géant en plus ! Enfin... Un genre de Monopoly.</Description>
+        <Objectif>Posséder 4 gares</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>33</Id>
+        <Nom>Time Lord</Nom>
+        <Description>"Look at these people, these human beings. Consider their potential! From the day they arrive on the planet, blinking, step into the sun, there is more to see than can ever be seen, more to do than—no, hold on. Sorry, that's The Lion King. But the point still stands: leave them alone!"</Description>
+        <Objectif>Avoir participé au développement du jeu</Objectif>
+        <isHidden>true</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>30</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>34</Id>
+        <Nom>Champion de chocolat</Nom>
+        <Description>C'est avec une cuillère et des vélos que vos soldats vont à la guerre ? Parce que pour l'instant une armée de retraités serait plus impressionante.</Description>
+        <Objectif>Avoir tué 100 ennemis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>5</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>35</Id>
+        <Nom>Chef de guerre</Nom>
+        <Description>C'est que vous commencez à vous faire une petite réputation. Vraiment vous vous en sortez bien ! Continuez comme ça, et vous allez peut-être faire peur à vos adversaires sans vous déguiser en joker.</Description>
+        <Objectif>Avoir tué 500 ennemis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>10</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>36</Id>
+        <Nom>Général sanguinaire</Nom>
+        <Description>Là on est loin de vos débuts en rase campagne à vous battre à coup de pelle. Vous avez vraiment l'envergure d'un chef. Et que dire de ce charisme formidable ?</Description>
+        <Objectif>Avoir tué 1000 ennemis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>15</ptsRecompense>
+    </Success>
+		<Success>
+        <Id>37</Id>
+        <Nom>Empereur</Nom>
+        <Description>Après maintes victoires, des combats acharnés, et des pertes catastrophiques, vous voilà devenu général parmi les généraux, un véritable empereur que les autres craignent et vénèrent en secret. Vous faites même la couverture de plusieurs magazines people !</Description>
+        <Objectif>Avoir tué 5000 ennemis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>false</isElite>
+        <ptsRecompense>20</ptsRecompense>
+    </Success>
+	<Success>
+        <Id>38</Id>
+        <Nom>Lord of War</Nom>
+        <Description>Après avoir envoyé dans l'espace un certain acteur, vous décidez de piquer le titre de l'un de ses minables rôles, et de vous nommer désormais "Lord of War". Ca fait terriblement bien sur le CV.</Description>
+        <Objectif>Avoir tué 10000 ennemis</Objectif>
+        <isHidden>false</isHidden>
+        <isElite>true</isElite>
+        <ptsRecompense>30</ptsRecompense>
+    </Success>
+</SuccessSet>

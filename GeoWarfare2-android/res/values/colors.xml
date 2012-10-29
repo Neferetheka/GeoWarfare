@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="title_text">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="foreground1">#ff355689</color>
+    <color name="foreground2">#ff7081a3</color>
+    <color name="background1">#ffffffff</color>
+    <color name="title_separator">#40ffffff</color>
+    <color name="background_text_section">#ffd4d4d4</color>
+    <color name="background_gray">#ffefefef</color>
+    <color name="holo_grey">#ff282828</color>
+    <color name="holo_blue">#ff08b5fb</color>
+    <color name="pinned_header_background">#ff202020</color>
+    <color name="foursquare_gray">#ffd1d4d3</color>
+</resources>

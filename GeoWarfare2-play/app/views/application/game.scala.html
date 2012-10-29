@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<title>GeoWarfare</title>
+<meta name="description"
+	content="Vous avez toujours rêvé de commander le monde, montrer à tous votre puissance ? Grâce à GeoWarfare dominez votre ville !">
+<meta name="author" content="Galaad of Aerilys" />
+<link rel="icon" type="image/ico" href="public/gfx/favicon.ico" />
+<link rel="stylesheet" href="@routes.Assets.at("/stylesheets/enyo.css")" />
+<script src="@routes.Assets.at("/javascripts/jquery-1.7.2.min.js")"></script>
+<script src="@routes.Assets.at("/javascripts/knockout.js")"></script>
+<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBkCXN7QHbizpw38dE_XRl5Vt_dGUqKBYM&sensor=true"></script>
+
+<meta name="application-name" content="GeoWarfare" />
+<meta name="msapplication-tooltip"
+	content="GeoWarfare, jeu mobile de conquete de secteur par geo-localisation" />
+<meta name="msapplication-starturl" content="http://www.geowarfare.net" />
+<meta name="msapplication-window" content="width=1024;height=768" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="public/images/favicon.ico">
+</head>
+<body>
+	<div class="onyx onyx-toolbar ">GeoWarfare</div>
+	<div class="container app onyx enyo-fit" class="onyx enyo-unselectable">
+		<div class="page onyx-groupbox modal visible" id="auth"
+			style="display: block;">
+			<div class="onyx-groupbox-header settings">Connexion</div>
+			<form class="onyx-form">
+				<p>
+					<label class="enyo-tool-decorator onyx-input-decorator"
+						id="labelPseudo"> <input style="width: 100%"
+						onfocus="bubbleInput('labelPseudo');"
+						onblur="bubbleOutInput('labelPseudo');"
+						class="enyo-input onyx-input" id="connexionPseudo"
+						placeholder="Pseudo" data-bind="value: pseudoTmp"></label>
+				</p>
+				<p>
+					<label class="enyo-tool-decorator onyx-input-decorator"
+						id="labelMdp"> <input style="width: 100%"
+						onfocus="bubbleInput('labelMdp');"
+						onblur="bubbleOutInput('labelMdp');" class="enyo-input onyx-input"
+						id="connexionMdp" placeholder="Mot de passe"
+						data-bind="value: mdpTmp"></label>
+				</p>
+				<p>
+					<button
+						class="enyo-tool-decorator onyx-button onyx-affirmative pad"
+						data-bind="click: authClick">Valider</button>
+					<br /> <a href="/inscription"><button
+							class="enyo-tool-decorator onyx-button enyo-unselectable onyx-blue">Cr&eacute;er
+							un compte</button></a>
+				</p>
+			</form>
+		</div>
+		<div class="page pad10" id="home">
+			<div class="onyx-groupbox" id="app_groupbox">
+				<div class="onyx-groupbox-header" data-bind="text: player().pseudo"></div>
+				<div class="pad8" style="height: 72px;">
+					<img src="" id="homeAvatar" alt="Avatar" class="avatar left"
+						data-bind="attr: { src: player().avatar}" />
+					<div class="left" style="padding-left: 5px;">
+						<em id="homeBioLabel" data-bind="text: player().biographie"></em><br />
+					</div>
+				</div>
+				<div class="gc"></div>
+			</div>
+			<br/>
+			<div class="onyx-groupbox" id="app_groupbox">
+				<div class="onyx-groupbox-header">Navigation</div>
+				<a href="#army" onclick="transition('army');"><div class="pad8 onyx-listitem">
+					<img src="public/gfx/Success/Incident_Nucléaire.png" alt="Armees" class="onyx-icon left" />
+					<span>Arm&eacute;es</span>
+				</div></a>
+					<a href="#army" onclick="transition('army');"><div class="pad8 onyx-listitem">
+					<img src="public/gfx/Success/Incident_Nucléaire.png" alt="Armees" class="onyx-icon left" />
+					<span>Secteurs</span>
+				</div></a>
+					<a href="#army" onclick="transition('army');"><div class="pad8 onyx-listitem">
+					<img src="public/gfx/Success/Incident_Nucléaire.png" alt="Armees" class="onyx-icon left" />
+					<span>Alliance</span>
+				</div></a>
+			</div>
+		</div>
+	</div>
+	<script src="@routes.Assets.at("/javascripts/mobile.js")" type="text/javascript"></script>
+</body>
+</html>

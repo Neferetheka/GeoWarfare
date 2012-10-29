@@ -1,0 +1,60 @@
+@(message: String) @main(" - Inscription") {
+<h1>Inscription</h1>
+<br/>
+<form method="post" action="/inscription" class="well" id="formRegister">
+	<div class="alert alert-error" id="registerErrorDiv" style="display:none;">	 
+	</div>
+	<div class="alert alert-success" id="registerSuccessDiv" style="display:none;">	 
+	</div>
+	<p>
+		<label for="pseudo">Pseudo</label>
+		<input type="text" id="pseudo" name="pseudo" placeholder="Kal-El..." required="required" onfocus="$('#pseudo').removeClass('invalidInput');"/>
+		<span class="help-inline">Votre pseudo doit contenir au moins trois caract&egrave;res</span>
+	</p>
+	<p>
+		<label for="mdp">Mot de passe</label>
+		<input type="password" id="mdp" name="mdp" required="required" onfocus="$('#mdp').removeClass('invalidInput');"/>
+		<span class="help-inline">Trois caract&egrave;res minimum</span>
+	</p>
+	<p>
+		<label for="mdp2">Confirmez le mot de passe</label>
+		<input type="password" id="mdp2" name="mdp2" required="required" onfocus="$('#mdp2').removeClass('invalidInput');"/>
+		<span class="help-inline">Id&eacute;alement, les deux mots de passe correspondent</span>
+	</p>
+	<p>
+		<label for="parrain">Parrain</label>
+		<input type="text" id="parrain" name="parrain" placeholder="Doomsday ?"/>
+		<span class="help-inline">Si vous connaissez d&eacute;j&agrave; un joueur, entrez son nom</span>
+		<div class="alert alert-info">
+		 	Avoir un parrain peut vous apporter des avantages en cours de jeu.
+		</div>
+	</p>	
+	<p class="input-prepend">
+		<label for="avatar">Avatar</label>
+		<span class="add-on">http://</span><input type="url" id="avatar" name="avatar" class="avatar-input" placeholder="bit.ly/zPJZXy"
+		onblur="changeAvatar();"/>
+		<span class="help-inline">Votre avatar sera visible par tous</span>
+		<br/>
+		 <img src="@routes.Assets.at("images/icons/androide.png")" alt ="Avatar" id="avatarImg" class="avatar"/>
+	</p>
+	<p>
+		<label for="captcha">Captcha</label>
+		<input type="text" id="captcha" name="captcha" placeholder="G1ML1" maxlength="5" required="required" onfocus="$('#captcha').removeClass('invalidInput');"/>
+		<span class="help-inline">Juste pour &ecirc;tre bien s&ucirc;r que vous &ecirc;tes... Humain</span>
+		<br/><br/>
+		<img  alt="Captcha powa" class="captcha" id="captchaImg"/>
+		 <input type="button" value="Recharger" class="btn btn-info" style="margin-left:10px;" onclick="loadCaptcha();")/>
+		<div class="gb"></div>
+	</p>
+	<p>
+		<label for="cgu" class="checkbox"><a href="/cgu" target="_blank">Conditions G&eacute;n&eacute;rales d'Utilisation</a> lues et accept&eacute;es
+			<input type="checkbox" name="cgu" id="cgu" required="required"/>
+		</label>
+	</p>
+	<p>
+		<br/>
+		<input type="button" value="Valider" class="btn btn-primary" onclick="validRegisterForm();"/>
+	</p>
+</form>
+<script type="text/javascript">loadCaptcha();</script>
+}

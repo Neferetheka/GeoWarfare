@@ -1,0 +1,86 @@
+@font-face { font-family: Ubuntu; src: url('../fonts/Ubuntu.ttf'); } 
+#headerWhite{background:url('../images/UI/bga.png') repeat-X; height:100px; min-width:1000px;}
+#headerBlack{background:#3A3A3A url('../images/UI/bgs.png') 50% 0 no-repeat; height:42px; min-width:1000px;}
+#headerContent{width:1000px; margin:auto; }
+#headerContent a:hover{text-decoration: none; color:#08C;}
+#headerLogo{padding-top:15px; -webkit-transform: rotateZ(-7deg); -moz-transform: rotateZ(-7deg); -o-transform: rotate(-7deg); -ms-transform: rotate(-7deg); float:left;}
+#headerContent ul{float:left; margin:0; padding:0; padding-left:25px; list-style-type: none; }
+#headerContent ul li {padding-top:15px; margin:auto; text-align:center; margin-left:5px; float:left; width:90px; font-family:'Ubuntu', sans-serif;
+font-size:14px; height:90px; cursor:pointer;
+-webkit-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-o-transition-property: background-color; 
+-o-transition-duration: 1s;
+-ms-transition: background-color 0.5s ease-in-out; }
+#headerContent ul li:hover{background-color: rgba(0,0,0,0.2);}
+#ssTitle{padding-left:100px; color:#00B4FF; font-size:large; font-family:'Quantico', sans-serif; font-weight:bold;}
+header .btn-group{float:right; margin-right:100px; margin-top:-50px;}
+#main{width:940px; margin:auto; margin-top:25px; border-radius:5px;}
+#mainContent{margin-top:25px; position:relative; min-height:900px; background:url('../images/UI/header_bg.jpg') no-repeat; background-repeat:no-repeat; border-radius:5px; padding:0;
+-webkit-box-shadow: 2px 2px 2px 2px #bfbfbf;
+-moz-box-shadow: 2px 2px 2px 2px #bfbfbf;
+box-shadow: 2px 2px 2px 2px #bfbfbf;}
+#sidebar{ margin-top:170px; background:url('../images/UI/opacity72.png') repeat;  border-right:solid 1px silver;}
+#sidebar a:hover{text-decoration: none;}
+#sidebar h2 {text-align: center; font-family:'Ubuntu', sans-serif; margin-top: 18px; font-size: x-large;}
+#sidebarColorBar{position: absolute; width:10px; height:70px; background: #00B4FF;}
+#sidebar .well { width:75%; cursor:pointer; margin:auto; margin-bottom:20px;
+-webkit-transition: background-color 0.5s ease-in-out;
+-o-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-ms-transition: background-color 0.5s ease-in-out; height:22px;}
+#sidebar .well p {padding-left: 40px; padding-top:5px; font-size:16px; color:#666;}
+#sidebar .well a:hover{text-decoration: none;}
+#sidebar .well:hover {background-color:#e5e5e5;}
+#sidebar .well img{display:inline; float:left; width:42px; height:42px; margin:-10px;}
+#content{position:relative; padding-top:260px;}
+.linkBrand{width:173px; margin:auto;}
+#androidMarketImg{border-radius:10px; -webkit-box-shadow: 0px 0px 0px 0px #00B4FF;
+-moz-box-shadow: 0px 0px 0px 0px #00B4FF;
+box-shadow:  0px 0px 0px 0px #00B4FF;
+-webkit-transition: box-shadow 0.5s ease-in-out;
+-moz-transition: -moz-box-shadow 0.5s ease-in-out;
+-ms-transition: -ms-box-shadow 0.5s ease-in-out;}
+.logoBrand{ width:260px; height:80px;}
+#androidMarketImg:hover{
+-webkit-box-shadow: 2px 0px 0px 0px #00B4FF;
+-moz-box-shadow: 0px 0px 2px 2px #00B4FF;
+box-shadow:  0px 0px 2px 2px #00B4FF;}
+.logoBrand{ width:173px; height:80px; margin:auto;}
+#WPBrand{border-radius:5px;
+	background:url('../images/UI/windows_market_GW.png');
+-webkit-transition: background-position 0.5s ease-in-out;
+-o-transition: background-position 0.5s;
+-moz-transition: background-position 0.5s ease-in-out;
+-ms-transition: background-position 0.5s ease-in-out;}
+#WPBrand:hover{background-position:100% 0%;}
+footer{clear:both; text-align: center; margin-top:20px; margin-bottom:20px; color:#8C8C8C;}
+.gb{clear:both;}
+.left{float:left;}
+.brandText{font-size: 16px; color:#333; font-family:Verdana, serif;}
+.accentColorText{color:#00B4FF;}
+.grayColorText{color:#8C8C8C;}
+.presentationBloc{ margin-top:15px; margin-bottom:15px;}
+.presentationBloc img{float:right;}
+.captcha{float:left;}
+.rightIcon{width:42px; float:left; margin-right:10px; height:42px;}
+.avatar {width:75px; height:75px;}
+.centre{margin:auto; width:75%;}
+article h2{color:#00B4FF;}
+.avatar-input{width:165px;}
+.downloadDevice{float:left; margin-left:32px; -moz-transition-property: -moz-transform; -moz-transition-duration: 0.5s; -webkit-transition-property: -webkit-transform; -webkit-transition-duration: 0.5s; -webkit-transition-timing-function: ease-in-out; -o-transition-property: -o-transform; -o-transition-duration: 0.5s;}
+.downloadDevice:hover{-webkit-transform:scale(1.1);  -o-transform:scale(1.2); -moz-transform:scale(1.1);}
+.metroBlue{color:#00B4FF;}
+@media (min-width: 0px) and (max-width: 768px) {
+#content{padding-top:10px;}
+#WPBrand{width:260px; background: url('../images/UI/windows_market_GW.png') no-repeat; background-position:0% 0%;}
+#headerContent ul li a img{display:none;}
+#headerContent ul li{float:none; margin-left:5px; height:20px; padding-top:0; width:auto;
+font-size:12px; }
+#headerContent ul{margin-top:-15px;}
+.aide{display:none;}
+	}
+.successImg{width:75px;}
+@media (max-width: 979px){
+	#headerLogo{width:200px;}
+}

@@ -1,0 +1,122 @@
+body { background:white; color:gray;}
+a:hover{text-decoration: none;}
+#mainContainer { margin:auto; width:1000px; margin-top:-10px;}
+.connexionNoun {margin-left:60px; margin-top:10px;}
+.modal-header img { max-height:36px; max-width:36px; float:left; margin-right:10px;}
+.modal-header .loaderGif{float:none;}
+.modal-header h3{display:inline;}
+.btn{cursor:pointer;}
+.loader-body{margin:auto; text-align:center; font-size: 1.5em;}
+.loader-body img {margin-bottom:25px;}
+.unitsImg{width:50px; float:left; margin-left:10px; margin-top:10px;}
+.miniLoaderGif {margin:auto; width:32px; text-align:center;}
+#topbarLogoLink{float:left; display:inline; margin-top:5px; margin-right:10px;}
+#nav, #nav-right{display:none;}
+/* Main Panel */
+.mainPanelStats{height:250px;}
+.mainPanelStats div{float:left; margin-top:25px; height:180px; width:200px; margin-left:20px;
+margin-right:20px; background-color:#efefef; border-radius:5px; border: solid 1px silver; text-align:center;
+-webkit-transition: background-color 0.5s ease-in-out;
+-o-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-ms-transition: background-color 0.5s ease-in-out;}
+.mainPanelStats div img{ margin: auto; margin-top:10px; width:72px;}
+.mainPanelStats div h3{ margin:5px;}
+.mainPanelStats div:hover{background-color:#d4d4d4;}
+.mainPanelUnits{float:left; width:300px; height:420px; border: solid 1px silver; border-radius:10px;}
+.mainPanelSecteurs{float:left; width: 650px; margin-left:10px; min-height:420px;}
+.mainPanelUnitsLabel {margin-left: 25px; float:left; height:75px; width:175px;}
+.mainPanelUnits .btn, #conquetePreparationDiv .btn { margin:5px; float:right; margin-top:10px;}
+.mainPanelUnits .miniLoaderGif{position:absolute; margin-left: 134px; margin-top:50px;}
+#map_canvas{margin-top:-10px; z-index:0;}
+#map_canvas_toolbar{position:absolute; left: 100px; margin-top:72px; z-index:2; background-color: rgba(0, 0, 0, 0.7);
+border-radius:7px; color:white; height:42px; width:200px; opacity:0.7;
+-webkit-transition: opacity 0.5s ease-in;
+-moz-transition: opacity 0.5s ease-in;
+-o-transition: opacity 0.5s ease-in;
+transition: opacity 0.5s ease-in;}
+#map_canvas_toolbar:hover, #map_canvas_secteurInfos:hover{opacity:1.0}
+#map_canvas_toolbar img {cursor:pointer; margin-left:10px; margin-right:10px;}
+#map_canvas_secteurInfos {width:200px; height:100px; background:rgba(0,0,0,0.7); border-radius:5px; position:absolute;
+right:50px; padding:10px; color:white; z-index:1; top:100px; margin-top:72px; opacity:0.8;
+-webkit-transition: opacity 0.5s ease-in;
+-moz-transition: opacity 0.5s ease-in;
+-o-transition: opacity 0.5s ease-in;
+transition: opacity 0.5s ease-in;}
+#map_canvas_secteurInfos h2 {color:#00B4FF;}
+.secteursListbox{border-radius:5px;}
+.secteursListbox div div{height:50px; background-color:#efefef; padding:5px; border-bottom:solid 1px silver; border-left:solid 1px silver; border-right:solid 1px silver;
+-webkit-transition: background-color 0.5s ease-in-out;
+-o-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-ms-transition: background-color 0.5s ease-in-out;}
+.secteursListbox div div:hover{background-color:#d4d4d4;}
+.secteursListbox div div[__idx="0"], #listboxSuccess div div[__idx="0"], .allyMembersPanel div div div[__idx="0"], 
+ .allyNewsPanel div div div[__idx="0"], #allyListbox div div div[__idx="0"], #messagerieListbox div div div[__idx="0"]
+{border-radius:10px 10px 0px 0px; border-top: solid 1px silver;}
+.newsCenter{padding-top:15px;}
+.secteursListbox .GPBYFDEDB{background: rgb(73,155,234); 
+background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzQ5OWJlYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyMDdjZTUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+background: -moz-linear-gradient(top, rgba(73,155,234,1) 0%, rgba(32,124,229,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(73,155,234,1)), color-stop(100%,rgba(32,124,229,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%); /* IE10+ */
+background: linear-gradient(top, rgba(73,155,234,1) 0%,rgba(32,124,229,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#207ce5',GradientType=0 ); /* IE6-8 */}
+.leftNewsBloc{padding-left:50px; font-size: large; float:left; width:488px;}
+#secteurDialogBody img{width:48px; height:35px;}
+#secteurDialogBody .gwt-InlineHTML, .resultAttaquantDiv span,.resultDefenseurDiv span{float:left; margin-left: 15px; margin-right:10px; font-size:x-large; font-weight:bold; margin-top:25px;}
+#secteurDialogBody .manageTroupesDiv{display: none;}
+#secteurDialogBody .manageTroupesDiv input{ margin-left:10px; width:100px; margin-top:15px;}
+#secteurDialogBody .manageTroupesDiv .help-inline{margin-top:10px;}
+.productionDetails{margin-left:25px; float:left;}
+#conquetePreparationDiv, #conqueteResultDiv{float:left; width:450px; margin-top:25px; padding:5px;}
+#conquetePreparationDiv input{margin-top:10px; margin-left:10px;}
+#conquetePreparationDiv #alertDiv{display:none;}
+#conqueteResultDiv{width:900px; display: none;}
+.successListboxItem .metroIcon {width:42px;}
+#listboxSuccess div div, .allyMembersPanel div div div, .allyNewsPanel div div div, #allyListbox div div div, #messagerieListbox div div div
+{height:50px; background-color:#efefef; padding:5px; border-bottom:solid 1px silver; border-left:solid 1px silver;
+border-right:solid 1px silver;
+-webkit-transition: background-color 0.5s ease-in-out;
+-o-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-ms-transition: background-color 0.5s -ease-in-out;}
+#listboxSuccess div div:hover, .allyMembersPanel div div div:hover,  .allyNewsPanel div div div:hover, #allyListbox div div div:hover, #messagerieListbox div div div:hover
+{background-color:#d4d4d4;}
+.leftSuccessBloc{padding-left:50px; font-size: large; float:left; width:820px;}
+.shareSocialNetwork img{float:left; width:75px;}
+.shareSocialNetwork span{float:left; margin-top: 25px; font-size:large; font-weight:bold; margin-left:25px;}
+.shareSocialNetwork{height:75px; padding:5px; -webkit-transition: background-color 0.5s ease-in-out;
+-o-transition: background-color 0.5s ease-in-out;
+-moz-transition: background-color 0.5s ease-in-out;
+-ms-transition: background-color 0.5s ease-in-out;}
+.shareSocialNetwork:hover{background-color:#efefef; cursor:pointer;}
+.shareSocialNetworkSelected{background-color:#d4d4d4; color:#000;}
+.shareSocialNetworkSelected:hover{background-color:#d4d4d4;}
+.modal-body textarea{width:480px; height:50px;}
+#profileDialogBody .avatar, .modal-body .avatar{max-width:100px; max-height:100px; float:left;}
+#profileDialogBody div, .modalBodyText{float:left; margin-left:25px; display:inline;}
+.modalBodyText{width:400px;}
+.allyDescriptionPanel{width:580px; height:150px; background:#efefef; border-radius:5px; border:solid 1px silver; float:left; padding:10px;}
+.allyDescriptionPanel .btn{float:right; margin:5px;}
+.allyDescriptionPanel img{float:left; max-width:120px;}
+.allyDescriptionPanel span{padding-left:10px;}
+.allyStatsPanel{float:left; width:360px; height:150px; background:#efefef; border-radius:5px; border:solid 1px silver; margin-left:10px; padding:10px;}
+.allyStatsPanel p{float:left; font-size:large; margin-left:10px; margin-top:10px;}
+.allyNewsPanel{float:left; width:600px;  background:#efefef; border-radius:5px;}
+.allyMembersPanel{margin-left: 10px; float:left; width:380px;}
+.allyMembersPanel .metroIcon{max-height:42px;}
+.allyThumb{float:left; width:100px; max-height:100px;}
+#allyListbox div div div{height:110px;}
+#allyListbox .leftNewsBloc{float:left; margin-top:42px; width:750px; font-size:x-large;}
+#allyListbox .metroIcon{margin-top:25px;}
+#messagerieListbox .leftNewsBloc{width:830px;}
+#ProfilPanel .well {margin:10px; margin-top:50px; min-height:200px;}
+#ProfilPanel .avatar{width:75px; height:75px; margin:10px; margin-right:25px; float:left;}
+
+.metroIcon{max-width:50px; max-height:50px; float:left; font-size:x-large; text-align:center;}
+.metroBlue{color:#00B4FF;}
+.pointer {cursor:pointer; }
+.gc{clear:both;}
