@@ -30,6 +30,7 @@ public class Player extends Model
 	public Date dateInscription;
 	public Date dateConnexion;
 	
+	public int faction = 0;
 	public int units = 0;
 	public int production = 1;
 	

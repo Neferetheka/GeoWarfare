@@ -14,6 +14,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import com.aerilys.geowarfare.android.R.layout;
+import com.aerilys.geowarfare.android.api.foursquare.Venue;
 import com.googlecode.androidannotations.api.BackgroundExecutor;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 
@@ -68,14 +69,14 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void selectVenueCompleted() {
+    public void openShare(final Venue venue) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    CheckinActivity_.super.selectVenueCompleted();
+                    CheckinActivity_.super.openShare(venue);
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -86,14 +87,32 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void manageUnitsPutArmyCompleted(final String result, final int unitsCount) {
+    public void openInFoursquare(final String venueId) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    CheckinActivity_.super.manageUnitsPutArmyCompleted(result, unitsCount);
+                    CheckinActivity_.super.openInFoursquare(venueId);
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void loadVenuesCompleted() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.loadVenuesCompleted();
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -122,14 +141,50 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void loadVenuesCompleted() {
+    public void manageUnitsPutArmyCompleted(final String result, final int unitsCount) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    CheckinActivity_.super.loadVenuesCompleted();
+                    CheckinActivity_.super.manageUnitsPutArmyCompleted(result, unitsCount);
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void selectVenueCompleted() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.selectVenueCompleted();
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void loadVenues() {
+        BackgroundExecutor.execute(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.loadVenues();
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -166,24 +221,6 @@ public final class CheckinActivity_
             public void run() {
                 try {
                     CheckinActivity_.super.manageUnitsPutArmy(unitsCount);
-                } catch (RuntimeException e) {
-                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
-                }
-            }
-
-        }
-        );
-    }
-
-    @Override
-    public void loadVenues() {
-        BackgroundExecutor.execute(new Runnable() {
-
-
-            @Override
-            public void run() {
-                try {
-                    CheckinActivity_.super.loadVenues();
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }

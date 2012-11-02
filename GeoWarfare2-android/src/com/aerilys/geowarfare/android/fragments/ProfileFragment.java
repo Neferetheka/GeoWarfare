@@ -47,27 +47,31 @@ public class ProfileFragment extends GeoFragment
 			((TextView) getView().findViewById(R.id.profileBiographie)).setText(DataContainer.getPlayerI()
 					.getBiography());
 
-			Bitmap cachedImage = null;
-			final ImageView imageView = (ImageView) getView().findViewById(R.id.profileAvatar);
-			try
+			if (DataContainer.getPlayerI().getAvatar() != null && DataContainer.getPlayerI().getAvatar().length() > 1)
 			{
-				cachedImage = imageLoader.loadImage(DataContainer.getPlayerI().getAvatar(), new ImageLoadedListener()
+				Bitmap cachedImage = null;
+				final ImageView imageView = (ImageView) getView().findViewById(R.id.profileAvatar);
+				try
 				{
-					public void imageLoaded(Bitmap imageBitmap)
-					{
-						imageView.setImageBitmap(imageBitmap);
-					}
-				});
+					cachedImage = imageLoader.loadImage(DataContainer.getPlayerI().getAvatar(),
+							new ImageLoadedListener()
+							{
+								public void imageLoaded(Bitmap imageBitmap)
+								{
+									imageView.setImageBitmap(imageBitmap);
+								}
+							});
 
-			}
-			catch (Exception e)
-			{
-				e.printStackTrace();
-			}
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+				}
 
-			if (cachedImage != null)
-			{
-				imageView.setImageBitmap(cachedImage);
+				if (cachedImage != null)
+				{
+					imageView.setImageBitmap(cachedImage);
+				}
 			}
 		}
 	}

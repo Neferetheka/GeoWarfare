@@ -1,6 +1,6 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="AppTheme" parent="android:Theme.Light" />
+    <style name="AppTheme" parent="Theme.Sherlock.Light" />
 
     <style name="Theme.AppThemeFullScreen" parent="@style/AppTheme">
         <item name="android:windowNoTitle">true</item>
@@ -10,6 +10,7 @@
     <style name="GButton">
         <item name="android:background">@drawable/buttonstates</item>
         <item name="android:layout_height">wrap_content</item>
+       
         <item name="android:textColor">#FFF</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_marginRight">5dp</item>

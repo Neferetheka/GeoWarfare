@@ -65,9 +65,20 @@
     <string name="deployment_finished">Déploiement terminé mon général !</string> 
     <string name="event">Evénement</string> 
     <string name="sample_date">03/10/2012 12:16</string> 
+    <string name="NMO">Nouvel Ordre Mondial</string>
+    <string name="Navaho">Navaho</string>
+    <string name="Dynasty">Dynastie Eternelle</string>
+    <string name="ROUTINE_PRODUCTION">Une nouvelle vague de recrues est arrivée ! Votre force armée est à présent de PROD unités</string>
     <string name="ROUTINE_battle_title">Bataille</string> 
     <string name="ROUTINE_battle_neutral">Vous avez brillament conquis le secteur neutre SECTORNAME !</string> 
 	<string name="ROUTINE_battle_win">Vous avez écrasé le général ENEMYNAME sur le secteur SECTORNAME !</string> 
 	<string name="ROUTINE_battle_equality">Une sanglante bataille a eu lieu et s\'est terminée sur un match nul avec le général ENEMYNAME sur le secteur SECTORNAME</string> 
 	<string name="ROUTINE_battle_defeat">Vous avez été pulvérisé le général ENEMYNAME sur le secteur SECTORNAME !</string> 
+	<string name="refresh_map">Actualiser la position</string> 
+	<string name="menu_change_type_map">Changer le type de la carte</string> 
+	<string name="nothing_here">On dirait qu\'il n\'y à rien à voir ici pour l\'instant...</string> 
+	<string name="menu_checkin_foursquare">Check in sur foursquare</string> 
+	<string name="share_location">Partager ma localisation</string> 
+	<string name="is_currently_in_sector">" est actuellement dans le secteur "</string> 
+	
 </resources>

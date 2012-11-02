@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -172,6 +173,8 @@ public class API extends Controller
 		{
 			sector.units = units.intValue();
 			sector.owner = player.login;
+			sector.influence = (player.faction + 1) * 100 + 1;
+			sector.development = 1;
 			sector.save();
 			Player.addGeoEvent(player, "ROUTINE_battle_title", "ROUTINE_battle_neutral|" + sector.name,
 					GeoEventType.Battle);
@@ -184,6 +187,9 @@ public class API extends Controller
 		if (result > 0) // Defaite
 		{
 			sector.units = result;
+			sector.changeDevelopment(-2);
+			sector.changeInfluence(2);
+
 			sector.save();
 			Player.addGeoEvent(player, "ROUTINE_battle_title", "ROUTINE_battle_defeat|" + sector.name + "|"
 					+ sector.name, GeoEventType.Battle);
@@ -201,9 +207,10 @@ public class API extends Controller
 		}
 		else
 		{
-			sector.units = -result;
 			sector.owner = player.login;
+			sector.units = -result;
 			sector.save();
+
 			Player.addGeoEvent(player, "ROUTINE_battle_title", "ROUTINE_battle_win|" + sector.name + "|" + sector.name,
 					GeoEventType.Battle);
 
@@ -222,20 +229,22 @@ public class API extends Controller
 			return ok("DP");
 
 		StringBuilder sb = new StringBuilder("{");
-		sb.append("\"units\":" + player.units + ", \"production\":" + player.production + ", \"sectors\":");
+		sb.append("\"units\":" + player.units + ", \"faction\":" + player.faction + ", \"production\":"
+				+ player.production + ", \"sectors\":");
 
 		String result = null;
-		
+
 		List<Sector> playerSectors = Sector.find.where().eq("owner", player.login).findList();
 		if (playerSectors.size() > 0)
 		{
 			sb.append("[");
-
+			Collections.reverse(playerSectors);
 			for (Sector sector : playerSectors)
 			{
 				sb.append("{\"name\":\"" + sector.name + "\", \"venueId\": \"" + sector.venueId + "\", \"owner\":\""
 						+ sector.owner + "\"," + "\"units\":\"" + sector.units + "\", \"cityName\": \""
-						+ sector.cityName + "\", \"latitude\": \"" + sector.latitude + "\", \"longitude\": \""
+						+ sector.cityName + "\", \"influence\":\"" + sector.influence + "\"," + "\"development\":\""
+						+ sector.development + "\", \"latitude\": \"" + sector.latitude + "\", \"longitude\": \""
 						+ sector.longitude + "\"},");
 			}
 			result = sb.toString();
@@ -281,7 +290,10 @@ public class API extends Controller
 		}
 
 		String result = sb.toString();
-		result = result.substring(0, result.length() - 1) + "]";
+		if (player.listGeoEvents.size() > 0)
+			result = result.substring(0, result.length() - 1) + "]";
+		else
+			result = "[]";
 
 		return ok(result);
 	}
@@ -310,7 +322,8 @@ public class API extends Controller
 	{
 		String result = "{" + "\"name\":\"" + sector.name + "\"" + ", \"venueId\": \"" + sector.venueId
 				+ "\",  \"owner\":\"" + sector.owner + "\"" + ", \"units\":\"" + sector.units + "\""
-				+ ", \"cityName\": \"" + sector.cityName + "\", \"latitude\": \"" + sector.latitude
+				+ ", \"cityName\": \"" + sector.cityName + "\", \"influence\":\"" + sector.influence + "\","
+				+ "\"development\":\"" + sector.development + "\", \"latitude\": \"" + sector.latitude
 				+ "\", \"longitude\": \"" + sector.longitude + "\" }";
 		return result;
 	}

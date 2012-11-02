@@ -10,6 +10,7 @@ import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.aerilys.geowarfare.android.R;
 import com.aerilys.geowarfare.android.fragments.ActivitiesFragment;
+import com.aerilys.geowarfare.android.fragments.AllyFragment;
 import com.aerilys.geowarfare.android.fragments.ArmyFragment;
 import com.aerilys.geowarfare.android.fragments.GeoFragment;
 import com.aerilys.geowarfare.android.fragments.ProfileFragment;
@@ -41,7 +42,7 @@ public class DashboardActivity extends SherlockFragmentActivity
 	private DashboardFragmentAdapter adapter;
 
 	private ViewPager pager;
-	private static boolean isPlayerProfileLoaded = false;
+	public static boolean isPlayerProfileLoaded = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -89,6 +90,20 @@ public class DashboardActivity extends SherlockFragmentActivity
 		else
 			updateUIPlayer();
 	}
+	
+	@Override
+	protected void onResume()
+	{
+		super.onResume();
+		if(DataContainer.getPlayerI().getKey() == null)
+			this.finish();
+		
+		if(pager != null && !isPlayerProfileLoaded)
+		{
+			loadPlayerProfile();
+			setProgressBarIndeterminateVisibility(true);
+		}
+	}
 
 	@Background
 	protected void loadPlayerProfile()
@@ -111,34 +126,42 @@ public class DashboardActivity extends SherlockFragmentActivity
 	protected void loadPlayerProfileCompleted(String result)
 	{
 		setProgressBarIndeterminateVisibility(false);
-
-		try
+		if (result != null)
 		{
-			JSONObject jsonReponse = new JSONObject(result);
 
-			DataContainer.getPlayerI().setUnits(jsonReponse.getInt("units"));
-			DataContainer.getPlayerI().setProduction(jsonReponse.getInt("production"));
-
-			JSONArray array = new JSONArray(jsonReponse.get("sectors").toString());
-			for (int i = 0; i < array.length(); i++)
+			try
 			{
-				JSONObject json = array.getJSONObject(i);
-				Sector sector = new Sector(json.getString("name"), json.getString("venueId"),
-						json.getDouble("longitude"), json.getDouble("latitude"), json.getString("owner"),
-						json.getString("cityName"), json.getInt("units"));
+				JSONObject jsonReponse = new JSONObject(result);
 
-				DataContainer.getPlayerI().getListSectors().add(sector);
+				DataContainer.getPlayerI().units = jsonReponse.getInt("units");
+				DataContainer.getPlayerI().production = jsonReponse.getInt("production");
+
+				DataContainer.getPlayerI().getListSectors().clear();
+				JSONArray array = new JSONArray(jsonReponse.get("sectors").toString());
+				for (int i = 0; i < array.length(); i++)
+				{
+					JSONObject json = array.getJSONObject(i);
+					Sector sector = new Sector(json.getString("name"), json.getString("venueId"),
+							json.getDouble("longitude"), json.getDouble("latitude"), json.getString("owner"),
+							json.getString("cityName"), json.getInt("units"));
+
+					sector.influence = json.getInt("influence");
+					sector.development = json.getInt("development");
+
+					DataContainer.getPlayerI().getListSectors().add(sector);
+				}
+				
+				isPlayerProfileLoaded = true;
+
+				setProgressBarIndeterminateVisibility(true);
+				loadGeoEvents();
+
+				updateUIPlayer();
 			}
-			isPlayerProfileLoaded = true;
-
-			setProgressBarIndeterminateVisibility(true);
-			loadGeoEvents();
-
-			updateUIPlayer();
-		}
-		catch (Exception e)
-		{
-			UIHelper.toastError(this, e);
+			catch (Exception e)
+			{
+				UIHelper.toastError(this, e);
+			}
 		}
 	}
 
@@ -178,8 +201,14 @@ public class DashboardActivity extends SherlockFragmentActivity
 				{
 				}.getType();
 
+				DataContainer.getPlayerI().getListGeoEvents().clear();
 				DataContainer.getPlayerI().setListGeoEvents((List<GeoEvent>) gson.fromJson(result, listType));
-				updateUIFromPageSelection(0);
+				for (GeoEvent event : DataContainer.getPlayerI().getListGeoEvents())
+				{
+					event.init();
+				}
+
+				updateUIFromPageSelection(0); 
 			}
 			catch (Exception e)
 			{
@@ -200,7 +229,7 @@ public class DashboardActivity extends SherlockFragmentActivity
 
 	public void onActivitiesClick(View v)
 	{
-		pager.setCurrentItem(0, true); 
+		pager.setCurrentItem(0, true);
 	}
 
 	public void onArmyClick(View v)
@@ -228,6 +257,7 @@ public class DashboardActivity extends SherlockFragmentActivity
 		ActivitiesFragment activitiesFragment = new ActivitiesFragment();
 		ArmyFragment armyFragment = new ArmyFragment();
 		ProfileFragment profileFragment = new ProfileFragment();
+		AllyFragment allyFragment = new AllyFragment();
 
 		public DashboardFragmentAdapter(FragmentManager fm)
 		{
@@ -243,10 +273,12 @@ public class DashboardActivity extends SherlockFragmentActivity
 		@Override
 		public Fragment getItem(int position)
 		{
-			if(position == 0)
+			if (position == 0)
 				return activitiesFragment;
 			else if (position == 1)
 				return armyFragment;
+			else if(position == 2)
+				return allyFragment;
 			else if (position == 3)
 				return profileFragment;
 			return new ActivitiesFragment();

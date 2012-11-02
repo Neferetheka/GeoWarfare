@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.actionbarsherlock.app.SherlockMapActivity;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.aerilys.geowarfare.android.R;
@@ -16,6 +18,7 @@ import com.aerilys.geowarfare.android.tools.DataContainer;
 import com.aerilys.geowarfare.android.tools.NetworkHelper;
 import com.aerilys.geowarfare.android.tools.SectorOverlay;
 import com.aerilys.geowarfare.android.tools.TabManager;
+import com.aerilys.geowarfare.android.tools.TaskHelper;
 import com.aerilys.geowarfare.android.tools.UIHelper;
 import com.aerilys.geowarfare.android.views.adapters.VenueAdapter;
 import com.google.android.maps.GeoPoint;
@@ -35,6 +38,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationListener;
@@ -64,6 +68,8 @@ public class CheckinActivity extends SherlockMapActivity
 	GeoPoint locationPointToShow = null;
 	private MapView mapView;
 	private List<Venue> nearByVenues;
+	private boolean wantsOpenInFoursquare = false;
+	private boolean wantsToShare = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -124,8 +130,8 @@ public class CheckinActivity extends SherlockMapActivity
 			// Register the listener with the Location Manager to receive
 			// location
 			// updates
-			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 600, 500, locationListener);
-			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600, 500, locationListener);
+			locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 600, 50, locationListener);
+			locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600, 50, locationListener);
 
 		}
 		catch (Exception e)
@@ -143,10 +149,26 @@ public class CheckinActivity extends SherlockMapActivity
 	}
 
 	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+		MenuInflater inflater = getSupportMenuInflater();
+		inflater.inflate(R.menu.activity_checkin, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		if (item.getItemId() == android.R.id.home)
 			this.finish();
+		else if (item.getItemId() == R.id.menu_refresh)
+			getLastLocation();
+		else if (item.getItemId() == R.id.menu_map_type)
+			ChangeMapType();
+		else if (item.getItemId() == R.id.menu_map_foursquare)
+			openInFoursquare(null);
+		else if (item.getItemId() == R.id.menu_map_share)
+			openShare(null);
 
 		return super.onOptionsItemSelected(item);
 	}
@@ -155,6 +177,30 @@ public class CheckinActivity extends SherlockMapActivity
 	protected boolean isRouteDisplayed()
 	{
 		return false;
+	}
+
+	private void getLastLocation()
+	{
+		try
+		{
+			List<String> providers = locationManager.getProviders(true);
+			for (String provider : providers)
+			{
+				Location location = locationManager.getLastKnownLocation(provider);
+
+				if (lastKnownLocation == null
+						|| (location != null && (location.getTime() - lastKnownLocation.getTime() > 900 || location
+								.getAccuracy() > lastKnownLocation.getAccuracy())))
+					lastKnownLocation = location;
+			}
+
+			if (lastKnownLocation != null)
+				locationUpdated(lastKnownLocation);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	protected void locationUpdated(Location location)
@@ -267,6 +313,18 @@ public class CheckinActivity extends SherlockMapActivity
 			}
 		});
 
+		dialog.setOnDismissListener(new OnDismissListener()
+		{
+			@Override
+			public void onDismiss(DialogInterface dialog)
+			{
+				if (wantsOpenInFoursquare)
+					wantsOpenInFoursquare = false;
+				if(wantsToShare)
+					wantsToShare = false;
+			}
+		});
+
 		dialog.show();
 
 		isLoading = false;
@@ -278,29 +336,40 @@ public class CheckinActivity extends SherlockMapActivity
 	{
 		final Venue selectedVenue = nearByVenues.get(position);
 
-		try
+		if (wantsOpenInFoursquare)
 		{
-			String result = NetworkHelper.HttpRequest(DataContainer.HOST + "checkin?key="
-					+ DataContainer.getPlayerI().getKey() + "&lon=" + selectedVenue.getLongitude() + "&lat="
-					+ selectedVenue.getLatitude() + "&a=" + lastKnownLocation.getAltitude() + "&venueName="
-					+ selectedVenue.Name.replace(" ", "SPACE") + "&venueId=" + selectedVenue.Id + "&cityName="
-					+ selectedVenue.City.replace(" ", "SPACE") + "&venueType="
-					+ selectedVenue.Category.replace(" ", "SPACE"));
-
-			Gson gson = new Gson();
-			Type listType = new TypeToken<Sector>()
+			openInFoursquare(selectedVenue.Id);
+		}
+		else if(wantsToShare)
+		{
+			openShare(selectedVenue);
+		}
+		else
+		{
+			try
 			{
-			}.getType();
-			currentSector = gson.fromJson(result, listType);
-			currentSector.setImage(selectedVenue.Image);
-			currentSector.setCategory(selectedVenue.Category);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+				String result = NetworkHelper.HttpRequest(DataContainer.HOST + "checkin?key="
+						+ DataContainer.getPlayerI().getKey() + "&lon=" + selectedVenue.getLongitude() + "&lat="
+						+ selectedVenue.getLatitude() + "&a=" + lastKnownLocation.getAltitude() + "&venueName="
+						+ selectedVenue.Name.replace(" ", "SPACE") + "&venueId=" + selectedVenue.Id + "&cityName="
+						+ selectedVenue.City.replace(" ", "SPACE") + "&venueType="
+						+ selectedVenue.Category.replace(" ", "SPACE"));
 
-		selectVenueCompleted();
+				Gson gson = new Gson();
+				Type listType = new TypeToken<Sector>()
+				{
+				}.getType();
+				currentSector = gson.fromJson(result, listType);
+				currentSector.setImage(selectedVenue.Image);
+				currentSector.setCategory(selectedVenue.Category);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			selectVenueCompleted();
+		}
 	}
 
 	@UiThread
@@ -317,7 +386,7 @@ public class CheckinActivity extends SherlockMapActivity
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle(currentSector.getName());
-		builder.setCancelable(true);
+		builder.setCancelable(false);
 
 		if (currentSector.getOwner().length() < 1)
 		{
@@ -350,6 +419,7 @@ public class CheckinActivity extends SherlockMapActivity
 					dialog.dismiss();
 
 					manageUnitsOpenDialog();
+
 				}
 			});
 		}
@@ -377,7 +447,7 @@ public class CheckinActivity extends SherlockMapActivity
 		((TextView) dialog.findViewById(R.id.manageUnitsSectorUnits)).setText(getString(R.string.units_in_sector)
 				+ currentSector.getUnits());
 		((TextView) dialog.findViewById(R.id.manageUnitsReserveUnits)).setText(getString(R.string.units_in_reserve)
-				+ DataContainer.getPlayerI().getUnits());
+				+ DataContainer.getPlayerI().units);
 
 		final EditText manageUnitsEdits = (EditText) dialog.findViewById(R.id.manageUnitsEdit);
 
@@ -426,19 +496,70 @@ public class CheckinActivity extends SherlockMapActivity
 	{
 		isLoading = false;
 		changeLoading();
-		
-		if(result == null)
+
+		if (result == null)
 		{
 			UIHelper.toastConnexion(this);
 		}
 		else
 		{
 			UIHelper.toast(this, getString(R.string.deployment_finished), true);
-			currentSector.setUnits(currentSector.getUnits()+unitsCount);
-			
-			DataContainer.getPlayerI().getSectorByVenueId(currentSector.getVenueId()).setUnits(currentSector.getUnits());
+			currentSector.setUnits(currentSector.getUnits() + unitsCount);
+			DataContainer.getPlayerI().units -= unitsCount;
+
+			DataContainer.getPlayerI().getSectorByVenueId(currentSector.getVenueId())
+					.setUnits(currentSector.getUnits());
 		}
 	}
+
+	public void ChangeMapType()
+	{
+		MapView mapView = (MapView) findViewById(R.id.mapView);
+		if (mapView.isSatellite())
+			mapView.setSatellite(false);
+		else
+			mapView.setSatellite(true);
+	}
+
+	@UiThread
+	protected void openInFoursquare(String venueId)
+	{
+		if (venueId == null)
+		{
+			wantsOpenInFoursquare = true;
+			isLoading = true;
+			changeLoading();
+			loadVenues();
+		}
+		else
+		{
+			isLoading = false;
+			changeLoading();
+			
+			String url = "http://m.foursquare.com/venue/" + venueId;
+			TaskHelper.browserTask(this, url);
+			wantsOpenInFoursquare = false;
+		}
+	}
+	
+	@UiThread
+	protected void openShare(Venue venue)
+	{
+		if(venue == null)
+		{
+			wantsToShare = true;
+			isLoading = true;
+			changeLoading();
+			loadVenues();
+		}
+		else
+		{
+			String title = getString(R.string.share_location);
+			String content = getString(R.string.the_general)+DataContainer.getPlayerI().getLogin()+getString(R.string.is_currently_in_sector)+venue.Name;
+			TaskHelper.shareTask(this, title, content);
+		}
+	}
+
 
 	@UiThread
 	protected void changeLoading()

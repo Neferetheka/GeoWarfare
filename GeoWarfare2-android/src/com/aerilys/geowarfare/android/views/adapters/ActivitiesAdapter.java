@@ -53,7 +53,7 @@ public class ActivitiesAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		final ViewHolder holder;
-
+ 
 		holder = new ViewHolder();
 		convertView = inflater.inflate(R.layout.listview_activities, null);
 
@@ -63,14 +63,16 @@ public class ActivitiesAdapter extends BaseAdapter
 		holder.activitiesDate = (TextView) convertView.findViewById(R.id.activitiesDate);
 
 		convertView.setTag(holder);
+		
+		GeoEvent event = getItem(position);
 
-		holder.activitiesTitle.setText(RoutineManager.getTextFromRoutine(inflater.getContext(), getItem(position).getTitle()));
-		holder.activitiesContent.setText(RoutineManager.getTextFromRoutine(inflater.getContext(), getItem(position).getContent()));
-		holder.activitiesDate.setText(getItem(position).getDatePublication().toString());
+		holder.activitiesTitle.setText(RoutineManager.getTextFromRoutine(inflater.getContext(), event.getTitle()));
+		holder.activitiesContent.setText(RoutineManager.getTextFromRoutine(inflater.getContext(), event.getContent()));
+		holder.activitiesDate.setText(event.getDatePublication());
 
-		if (getItem(position).getGeoEventType() == GeoEventType.Battle)
+		if (event.getGeoEventType() == GeoEventType.Battle)
 			holder.activitiesImage.setImageResource(R.drawable.noun_rocket);
-		else if (getItem(position).getGeoEventType() == GeoEventType.Success)
+		else if (event.getGeoEventType() == GeoEventType.Success)
 			holder.activitiesImage.setImageResource(R.drawable.noun_award);
 		else
 			holder.activitiesImage.setImageResource(R.drawable.question);

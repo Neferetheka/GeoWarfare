@@ -68,14 +68,14 @@ public final class DashboardActivity_
     }
 
     @Override
-    public void loadPlayerProfileCompleted(final String result) {
+    public void loadGeoEventsCompleted(final String result) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    DashboardActivity_.super.loadPlayerProfileCompleted(result);
+                    DashboardActivity_.super.loadGeoEventsCompleted(result);
                 } catch (RuntimeException e) {
                     Log.e("DashboardActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -86,14 +86,14 @@ public final class DashboardActivity_
     }
 
     @Override
-    public void loadGeoEventsCompleted(final String result) {
+    public void loadPlayerProfileCompleted(final String result) {
         handler_.post(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    DashboardActivity_.super.loadGeoEventsCompleted(result);
+                    DashboardActivity_.super.loadPlayerProfileCompleted(result);
                 } catch (RuntimeException e) {
                     Log.e("DashboardActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }

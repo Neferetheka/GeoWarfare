@@ -49,9 +49,20 @@ public class SectorActivity extends SherlockActivity
 		if (item.getItemId() == android.R.id.home)
 		{
 			this.finish();
-			return super.onOptionsItemSelected(item);
+			return super.onMenuItemSelected(featureId, item);
 		}
 		
 		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(com.actionbarsherlock.view.MenuItem item)
+	{
+		if (item.getItemId() == android.R.id.home)
+		{
+			this.finish();
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 }

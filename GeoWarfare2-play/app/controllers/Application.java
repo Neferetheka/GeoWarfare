@@ -1,9 +1,7 @@
 package controllers;
 
-import java.util.Date;
 import java.util.List;
 
-import models.GeoEvent.GeoEventType;
 import models.News;
 import models.Player;
 import models.Success;
@@ -16,22 +14,7 @@ public class Application extends Controller
 {
 
 	public static Result index()
-	{
-		int count = Player.find.findRowCount();
-		
-		if(count == 0)
-		{
-			Player player = new Player();
-			player.login = "Galaad";
-			player.password = "test";
-			player.units = 10;
-			player.production = 10;
-			player.dateInscription = new Date();
-			player.save();
-			
-			Player.addGeoEvent(player, "Attaque", "J'apprécie les fruits au sirop !", GeoEventType.Battle);
-		}
-		
+	{	
 		return ok(index.render("Your new application is ready."));
 	}
 

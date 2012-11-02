@@ -7,11 +7,14 @@ public abstract class RoutineManager
 {
 	public static String getTextFromRoutine(Context context, String routine)
 	{
+		if(!routine.contains("ROUTINE"))
+			return routine;
+		
 		if (routine.contains("|"))
 		{
 			String[] results = routine.split("\\|");
 			
-			String result= getStringByName(context, results[0]).replace("SECTORNAME", results[1]);
+			String result= getStringByName(context, results[0]).replace("SECTORNAME", results[1]).replace("LIEU", results[1]).replace("PROD", results[1]);
 			if(results.length == 3)
 				result = result.replace("ENEMYNAME", results[2]);
 			

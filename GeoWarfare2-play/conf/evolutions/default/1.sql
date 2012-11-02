@@ -65,6 +65,7 @@ create table player (
   password                  varchar(255),
   date_inscription          datetime,
   date_connexion            datetime,
+  faction                   integer,
   units                     integer,
   production                integer,
   avatar                    varchar(255),
@@ -86,6 +87,8 @@ create table sector (
   owner                     varchar(255),
   category                  varchar(255),
   units                     integer,
+  influence                 integer,
+  development               integer,
   constraint pk_sector primary key (id))
 ;
 

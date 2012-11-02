@@ -12,7 +12,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/ActionBarSherlock"/>
-	<classpathentry kind="lib" path="C:/Users/Galaad/Documents/Java/GeoWarfare2-android/libs/actionbarsherlock.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Galaad/Documents/Java/GeoWarfare2-android/libs/actionbarsherlock-plugin-maps-4.1.0.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

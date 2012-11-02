@@ -11,6 +11,9 @@ public class Sector
 	private int units;
 	private String image ="";
 	private String category;
+	
+	public int influence = 101;
+	public int development = 1;
 
 	public Sector(String name, String venueId, double longitude, double latitude, String owner, String cityName, int units)
 	{

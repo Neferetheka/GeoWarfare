@@ -4,6 +4,7 @@ import com.aerilys.geowarfare.android.R;
 import com.aerilys.geowarfare.android.models.Player;
 import com.aerilys.geowarfare.android.tools.DataContainer;
 import com.aerilys.geowarfare.android.tools.NetworkHelper;
+import com.aerilys.geowarfare.android.tools.Strings;
 import com.aerilys.geowarfare.android.tools.TabManager;
 import com.aerilys.geowarfare.android.tools.UIHelper;
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -51,6 +52,9 @@ public class LoginActivity extends Activity
 
 		String password = prefs.getString("password", "");
 		passwordEdit.setText(password);
+		
+		if(!Strings.isNullOrEmpty(login) && !Strings.isNullOrEmpty(password))
+			initConnexion();
 	}
 
 	public void loginClick(View v)

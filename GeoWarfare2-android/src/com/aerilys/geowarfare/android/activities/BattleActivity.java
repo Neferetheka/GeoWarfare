@@ -68,7 +68,7 @@ public class BattleActivity extends SherlockActivity
 		getSherlock().getActionBar().setTitle(currentSector.getName());
 		getSherlock().getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		battleUnitLabel.setText(getString(R.string.number) + DataContainer.getPlayerI().getUnits());
+		battleUnitLabel.setText(getString(R.string.number) + DataContainer.getPlayerI().units);
 
 		if (Strings.isNullOrEmpty(currentSector.getOwner()))
 			battleSectorLabel.setText(getString(R.string.neutral_sector));
@@ -140,7 +140,7 @@ public class BattleActivity extends SherlockActivity
 		}
 
 		unitsCount = Converter.ctI(battleUnitEdit.getText().toString());
-		if (unitsCount <= 0 || unitsCount > DataContainer.getPlayerI().getUnits())
+		if (unitsCount <= 0 || unitsCount > DataContainer.getPlayerI().units)
 		{
 			UIHelper.toast(this, getString(R.string.have_to_send_units), true);
 			return super.onOptionsItemSelected(item);

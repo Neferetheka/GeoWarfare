@@ -16,7 +16,6 @@ public class Venue
 	private double latitude;
 	private double longitude;
 
-	public int NbZombies = 0;
 
 	public Venue(String name, String id, JSONObject location, JSONArray categories) throws JSONException
 	{

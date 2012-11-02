@@ -4,17 +4,27 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.aerilys.geowarfare.android.R;
+
+import android.content.Context;
+
 public class Player
 {
+	public enum Factions
+	{
+		NMO, Navaho, Dynasty
+	}
+
 	private String login;
 	private String password;
 	private String key;
 	private String biography;
 	private String avatar;
-	
-	private int units;
-	private int production;
-	
+
+	public int units;
+	public int production;
+	public int faction;
+
 	private List<Sector> listSectors = new ArrayList<Sector>();
 	private List<GeoEvent> listGeoEvents = new ArrayList<GeoEvent>();
 
@@ -24,15 +34,37 @@ public class Player
 		this.password = password;
 		this.key = key;
 	}
-	
+
 	public Sector getSectorByVenueId(String venueId)
 	{
 		for (Sector sector : listSectors)
 		{
-			if(sector.getVenueId().equals(venueId))
+			if (sector.getVenueId().equals(venueId))
 				return sector;
 		}
 		return null;
+	}
+	
+	public static String getFactionNameFromIndex(Context context, int index)
+	{
+		int id = -1;
+		switch(index)
+		{
+			case 0:
+				id = R.string.NMO; 
+				break;
+			case 1:
+				id = R.string.Navaho;
+				break;
+			case 2:
+				id = R.string.Dynasty;
+				break;
+		}
+		
+		if(id != -1)
+			return context.getString(id);
+		else
+			return "";
 	}
 
 	public String AccessToken;
@@ -56,7 +88,7 @@ public class Player
 	{
 		this.password = password;
 	}
-	
+
 	public String getKey()
 	{
 		return key;
@@ -77,27 +109,7 @@ public class Player
 		this.listGeoEvents = listGeoEvents;
 		Collections.reverse(this.listGeoEvents);
 	}
-
-	public int getUnits()
-	{
-		return units;
-	}
-
-	public void setUnits(int units)
-	{
-		this.units = units;
-	}
-
-	public int getProduction()
-	{
-		return production;
-	}
-
-	public void setProduction(int production)
-	{
-		this.production = production;
-	}
-
+	
 	public String getBiography()
 	{
 		return biography;

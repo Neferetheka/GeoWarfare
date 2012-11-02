@@ -45,6 +45,7 @@ public class SectorAdapter extends BaseAdapter
 		ImageView sectorImage;
 		TextView sectorName;
 		TextView sectorUnits;
+		TextView sectorDescription;
 	}
 
 	public View getView(final int position, View convertView, ViewGroup parent)
@@ -57,11 +58,25 @@ public class SectorAdapter extends BaseAdapter
 		holder.sectorImage = (ImageView) convertView.findViewById(R.id.sectorListviewImage);
 		holder.sectorName = (TextView) convertView.findViewById(R.id.sectorListviewName);
 		holder.sectorUnits = (TextView) convertView.findViewById(R.id.sectorListviewUnits);
+		holder.sectorDescription = (TextView) convertView.findViewById(R.id.sectorListviewDescription);
 
 		convertView.setTag(holder);
 
 		holder.sectorName.setText(getItem(position).getName());
 		holder.sectorUnits.setText(getItem(position).getUnits() + "");
+
+		String descriptionKey = "NOMI" + ((int)Math.floor(getItem(position).influence %100 / 25) + 1) + "D"
+				+ ((int)Math.floor(getItem(position).development) + 1);
+
+		try
+		{
+			holder.sectorDescription.setText(inflater.getContext().getResources()
+					.getIdentifier(descriptionKey, "string", inflater.getContext().getPackageName()));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
 		if (getItem(position).getImage().length() > 5)
 		{

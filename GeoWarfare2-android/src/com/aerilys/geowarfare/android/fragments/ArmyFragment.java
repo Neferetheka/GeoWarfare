@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.aerilys.geowarfare.android.R;
+import com.aerilys.geowarfare.android.models.Player;
 import com.aerilys.geowarfare.android.tools.DataContainer;
 
 public class ArmyFragment extends GeoFragment
@@ -40,11 +41,15 @@ public class ArmyFragment extends GeoFragment
 		{
 			try
 			{
+				
 				TextView unitsLabel = (TextView) getView().findViewById(R.id.unitsLabel);
-				unitsLabel.setText(getString(R.string.units) + " : " + DataContainer.getPlayerI().getUnits());
+				unitsLabel.setText(getString(R.string.units) + " : " + DataContainer.getPlayerI().units);
 
 				((TextView) getView().findViewById(R.id.productionLabel)).setText(getString(R.string.production)
-						+ " : " + DataContainer.getPlayerI().getProduction());
+						+ " : " + DataContainer.getPlayerI().production);
+				
+				((TextView)getView().findViewById(R.id.factionLabel)).setText(
+						Player.getFactionNameFromIndex(getActivity(), DataContainer.getPlayerI().faction));
 			}
 			catch (Exception e)
 			{

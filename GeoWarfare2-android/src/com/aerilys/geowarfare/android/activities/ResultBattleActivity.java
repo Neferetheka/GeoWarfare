@@ -79,6 +79,8 @@ public class ResultBattleActivity extends SherlockActivity
 				stringToShare = getString(R.string.the_general) + DataContainer.getPlayerI().getLogin()
 						+ getString(R.string.has_conquest) + sectorName + getString(R.string.against_general)
 						+ DataContainer.getInstance().currentSector.getOwner();
+				
+				DashboardActivity.isPlayerProfileLoaded = false;
 			}
 			else if (resultBattle.equals("e"))
 			{
@@ -135,5 +137,22 @@ public class ResultBattleActivity extends SherlockActivity
 		}
 
 		return super.onMenuItemSelected(featureId, item);
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		if (item.getItemId() == android.R.id.home)
+		{
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
+
+		else if (item.getTitle().equals(getString(R.string.share)))
+		{
+			TaskHelper.shareTask(this, getString(R.string.share_battle_result), stringToShare);
+		}
+		
+		return super.onOptionsItemSelected(item);
 	}
 }

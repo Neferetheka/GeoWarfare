@@ -4,12 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     android:padding="5dp" >
-
+
     <ImageView
         android:id="@+id/activitiesImage"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:contentDescription="@string/event"
+        android:padding="10dp"
         android:src="@drawable/question" />
 
     <LinearLayout
