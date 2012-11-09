@@ -62,12 +62,14 @@ public class SectorAdapter extends BaseAdapter
 
 		convertView.setTag(holder);
 
-		holder.sectorName.setText(getItem(position).getName());
-		holder.sectorUnits.setText(getItem(position).getUnits() + "");
+		Sector currentSector = getItem(position);
+		
+		holder.sectorName.setText(currentSector.getName());
+		holder.sectorUnits.setText(currentSector.getUnits() + "");
 
-		String descriptionKey = "NOMI" + ((int)Math.floor(getItem(position).influence %100 / 25) + 1) + "D"
-				+ ((int)Math.floor(getItem(position).development) + 1);
-
+		String descriptionKey = "NOMI" + ((int)Math.floor(currentSector.influence %100 / 25) + 1) + "D"
+				+ ((int)Math.floor(currentSector.development/25) + 1);
+ 
 		try
 		{
 			holder.sectorDescription.setText(inflater.getContext().getResources()

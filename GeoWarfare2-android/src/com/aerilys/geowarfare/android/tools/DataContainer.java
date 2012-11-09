@@ -1,33 +1,12 @@
 package com.aerilys.geowarfare.android.tools;
 
-import com.aerilys.geowarfare.android.models.Player;
-import com.aerilys.geowarfare.android.models.Sector;
-
-/*import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
-import android.app.Activity;
-import android.content.Context;
-import android.util.Log;
-
-import com.aerilys.geowarfare.android.Main;
-import com.aerilys.geowarfare.android.R;
-import com.aerilys.geowarfare.android.datas.Serializer;
-import com.aerilys.geowarfare.android.datas.StorageHelper;
-import com.aerilys.geowarfare.android.models.Alliance;
 import com.aerilys.geowarfare.android.models.Player;
-import com.aerilys.geowarfare.android.models.Secteur;
-import com.aerilys.geowarfare.android.models.Success;*/
+import com.aerilys.geowarfare.android.models.Sector;
+import com.aerilys.geowarfare.android.models.Success;
+
 
 public class DataContainer
 {
@@ -64,10 +43,12 @@ public class DataContainer
 	public BitmapCache getBitmapCache()
 	{
 		return bitmapCache;
-	}
+	} 
+	
+	public List<Success> listSuccess = new ArrayList<Success>();
+	
 
 /*	Player player;
-	public List<Success> ListeSuccess = new ArrayList<Success>();
 	public List<String> listVisitedSecteurs = new ArrayList<String>();
 	public boolean hasNewMessages = false;
 

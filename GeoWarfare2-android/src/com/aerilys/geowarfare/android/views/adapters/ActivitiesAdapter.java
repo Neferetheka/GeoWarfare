@@ -74,6 +74,8 @@ public class ActivitiesAdapter extends BaseAdapter
 			holder.activitiesImage.setImageResource(R.drawable.noun_rocket);
 		else if (event.getGeoEventType() == GeoEventType.Success)
 			holder.activitiesImage.setImageResource(R.drawable.noun_award);
+		else if (event.getGeoEventType() == GeoEventType.Production)
+			holder.activitiesImage.setImageResource(R.drawable.tank);
 		else
 			holder.activitiesImage.setImageResource(R.drawable.question);
 

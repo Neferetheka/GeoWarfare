@@ -86,6 +86,24 @@ public final class DashboardActivity_
     }
 
     @Override
+    public void loadSuccessCompleted(final String result) {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    DashboardActivity_.super.loadSuccessCompleted(result);
+                } catch (RuntimeException e) {
+                    Log.e("DashboardActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
     public void loadPlayerProfileCompleted(final String result) {
         handler_.post(new Runnable() {
 
@@ -94,6 +112,24 @@ public final class DashboardActivity_
             public void run() {
                 try {
                     DashboardActivity_.super.loadPlayerProfileCompleted(result);
+                } catch (RuntimeException e) {
+                    Log.e("DashboardActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void loadSuccess() {
+        BackgroundExecutor.execute(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    DashboardActivity_.super.loadSuccess();
                 } catch (RuntimeException e) {
                     Log.e("DashboardActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }

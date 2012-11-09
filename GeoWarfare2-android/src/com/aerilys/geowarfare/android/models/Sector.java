@@ -27,6 +27,15 @@ public class Sector
 		this.units = units;
 	}
 
+	public static Sector clone(Sector currentSector)
+	{
+		Sector newSector = new Sector(currentSector.name, 
+				currentSector.venueId, currentSector.longitude, currentSector.latitude, 
+				currentSector.owner, currentSector.cityName, currentSector.units);
+		
+		return newSector;
+	}
+	
 	public String getName()
 	{
 		return name;

@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ListView;
+import com.aerilys.geowarfare.android.R.id;
 import com.aerilys.geowarfare.android.R.layout;
 import com.googlecode.androidannotations.api.SdkVersionHelper;
 
@@ -30,6 +32,7 @@ public final class SuccessActivity_
     }
 
     private void afterSetContentView_() {
+        listviewSuccess = ((ListView) findViewById(id.listviewSuccess));
         bindDatas();
     }
 

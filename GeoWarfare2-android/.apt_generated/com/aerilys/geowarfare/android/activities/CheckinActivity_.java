@@ -69,78 +69,6 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void openShare(final Venue venue) {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                try {
-                    CheckinActivity_.super.openShare(venue);
-                } catch (RuntimeException e) {
-                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
-                }
-            }
-
-        }
-        );
-    }
-
-    @Override
-    public void openInFoursquare(final String venueId) {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                try {
-                    CheckinActivity_.super.openInFoursquare(venueId);
-                } catch (RuntimeException e) {
-                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
-                }
-            }
-
-        }
-        );
-    }
-
-    @Override
-    public void loadVenuesCompleted() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                try {
-                    CheckinActivity_.super.loadVenuesCompleted();
-                } catch (RuntimeException e) {
-                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
-                }
-            }
-
-        }
-        );
-    }
-
-    @Override
-    public void changeLoading() {
-        handler_.post(new Runnable() {
-
-
-            @Override
-            public void run() {
-                try {
-                    CheckinActivity_.super.changeLoading();
-                } catch (RuntimeException e) {
-                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
-                }
-            }
-
-        }
-        );
-    }
-
-    @Override
     public void manageUnitsPutArmyCompleted(final String result, final int unitsCount) {
         handler_.post(new Runnable() {
 
@@ -177,14 +105,86 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void loadVenues() {
+    public void changeLoading() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.changeLoading();
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void loadVenuesCompleted() {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.loadVenuesCompleted();
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void openShare(final Venue venue) {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.openShare(venue);
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void openInFoursquare(final String venueId) {
+        handler_.post(new Runnable() {
+
+
+            @Override
+            public void run() {
+                try {
+                    CheckinActivity_.super.openInFoursquare(venueId);
+                } catch (RuntimeException e) {
+                    Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
+                }
+            }
+
+        }
+        );
+    }
+
+    @Override
+    public void manageUnitsPutArmy(final int unitsCount) {
         BackgroundExecutor.execute(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    CheckinActivity_.super.loadVenues();
+                    CheckinActivity_.super.manageUnitsPutArmy(unitsCount);
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }
@@ -213,14 +213,14 @@ public final class CheckinActivity_
     }
 
     @Override
-    public void manageUnitsPutArmy(final int unitsCount) {
+    public void loadVenues() {
         BackgroundExecutor.execute(new Runnable() {
 
 
             @Override
             public void run() {
                 try {
-                    CheckinActivity_.super.manageUnitsPutArmy(unitsCount);
+                    CheckinActivity_.super.loadVenues();
                 } catch (RuntimeException e) {
                     Log.e("CheckinActivity_", "A runtime exception was thrown while executing code in a runnable", e);
                 }

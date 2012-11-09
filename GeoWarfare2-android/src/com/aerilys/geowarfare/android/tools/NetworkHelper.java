@@ -44,7 +44,7 @@ public abstract class NetworkHelper
 			{
 				try
 				{
-					String responseString = EntityUtils.toString(entity);
+					String responseString = EntityUtils.toString(entity, "UTF-8");
 					return responseString;
 				}
 				catch (ParseException e)
@@ -122,6 +122,6 @@ public abstract class NetworkHelper
 			if (networkState.compareTo(State.CONNECTED) == 0)
 				return true;
 		}
-		return false;
+		return true; //TODO: True for DEBUG
 	}
 }

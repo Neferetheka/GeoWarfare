@@ -5,26 +5,37 @@
     <string name="NOMI1D2">Un endroit peuplé et modeste. Les défenses militaires et la technologie sont inexistants.</string>
     <string name="NOMI1D3">Un lieu important et évolué, mais subissant la propagande de l\'ennemi et l\'influence de la magie.</string>
     <string name="NOMI1D4">Un lieu capital, à la culture rayonnante, mais corrompu par la magie et les machinations ennemies !</string>
-    
-    <string name="NOM21D1">Ce lieu vaut à peine mieux qu\'un bidonville abandonné où on aurait donné une cargaison de téléphones portables.</string>
-    <string name="NOM21D2">Des usines, des usines, et encore des usines. Au moins on capte le réseau satellite !</string>
-    <string name="NOM21D3">Bien que la magie soit présente dans les moeurs, l\'endroit respire la civilisation. Il manque juste une ou deux antennes.</string>
-    <string name="NOM21D4">Véritable joyau local, cet endroit rayonne par sa grandeur culturelle. Il ne manque plus qu\'une technologie décente.</string>
-    
+    <string name="NOMI2D1">Ce lieu vaut à peine mieux qu\'un bidonville abandonné où on aurait donné une cargaison de téléphones portables.</string>
+    <string name="NOMI2D2">Des usines, des usines, et encore des usines. Au moins on capte le réseau satellite !</string>
+    <string name="NOMI2D3">Bien que la magie soit présente dans les moeurs, l\'endroit respire la civilisation. Il manque juste une ou deux antennes.</string>
+    <string name="NOMI2D4">Véritable joyau local, cet endroit rayonne par sa grandeur culturelle. Il ne manque plus qu\'une technologie décente.</string>
     <string name="NOMI3D1">L\'endroit tombe en ruine, mais au moins, la technologie et l\'ordre sont présents. Gare aux magiciens !</string>
     <string name="NOMI3D2">La police à chaque coin de rue et les tanks dissuadent fortement les ouvriers locaux de discuter votre autorité mon général.</string>
     <string name="NOMI3D3">Véritable base militaire de pointe, ce lieu est un centre d\'opérations indispensable à votre domination !</string>
     <string name="NOMI3D4">Cet endroit est presque l\'image parfaite de la civilisation mon général. Encore une ou deux casernes et ce sera parfait !</string>
-    
     <string name="NOMI4D1">Bien que cela paraisse improbable mon général, ce lieu regorge plus d\'armes et d\'outils technologiques que de nourriture.</string>
     <string name="NOMI4D2">Cet endroit comporte plusieurs usines de pointe dans le domaine de la technologie, offrant une vie confortable aux habitants.</string>
-    <string name="NOMI5D3">Ce lieu est presque un paradis. La technologie est omniprésente, la magie inexistante, et la sécurité est optimale mon général !</string>
-    <string name="NOMI41D4">Il n\'existe probablement pas de plus bel endroit sur Terre. Ce lieu sort tout droit d\'un film de science-fiction, et vous en êtes le chef mon général !</string>
-
+    <string name="NOMI4D3">Ce lieu est presque un paradis. La technologie est omniprésente, la magie inexistante, et la sécurité est optimale mon général !</string>
+    <string name="NOMI4D4">Il n\'existe probablement pas de plus bel endroit sur Terre. Ce lieu sort tout droit d\'un film de science-fiction, et vous en êtes le chef mon général !</string>
+    <string name="ROUTINE_EVENT_NMO_0_0">Armageddon</string>
+    <string name="ROUTINE_EVENT_NMO_0_0_description">Une grosse météorite s\'est écrasé à LIEU, détruisant de nombreuses installations !</string>
     <string name="ROUTINE_EVENT_NMO_0_1">Salon de la technologie</string>
     <string name="ROUTINE_EVENT_NMO_0_1_description">Un salon de la technologie est organisé à LIEU. Votre démonstration de la technologie a impressionné les autochtones qui vous respectent bien plus à présent !</string>
     <string name="ROUTINE_EVENT_NMO_0_2">Tempête solaire</string>
     <string name="ROUTINE_EVENT_NMO_0_2_description">Une dangereuse tempête solaire fait actuellement rage à LIEU. Malgré votre technologie, la population est très touchée par le phénomène, et les dégâts seront considérables.</string>
     <string name="ROUTINE_EVENT_NMO_0_3">Manifestation d\'esprits</string>
     <string name="ROUTINE_EVENT_NMO_0_3_description">Un vicieux groupe de shamans Navaho a envahit LIEU et a invoqué des esprits destructeurs. Les coupables ont été abattus, mais la population a été impressionné par le spectacle !</string>
+    <string name="ROUTINE_EVENT_NMO_0_4">Démonstration de force</string>
+    <string name="ROUTINE_EVENT_NMO_0_4_description">Lassé de l\'indiscipline de la populace à LIEU, vous avez décidé de renforcer la sécurité, et de dégomer quelques dissidants pour l\'exemple. Ca a l\'air d\'être efficace !</string>
+    <string name="ROUTINE_EVENT_NMO_0_5">Nouveau chef de la sécurité</string>
+    <string name="ROUTINE_EVENT_NMO_0_5_description">Le nouveau chef de la sécurité à LIEU est un vrai boucher. Depuis qu\'il est en poste, la criminalité a été divisée par deux, et les dissidents se font bien moins nombreux !</string>
+    <string name="ROUTINE_EVENT_NMO_0_6">Héros local</string>
+    <string name="ROUTINE_EVENT_NMO_0_6_description">Ralliant à lui la populace de LIEU, l\'un de vos soldats est devenu une vraie légende dans le coin. Et un peu plus d\'influence pour vous !</string>
+    <string name="ROUTINE_EVENT_NMO_0_7">Manifestations</string>
+    <string name="ROUTINE_EVENT_NMO_0_7_description">De nombreuses manifestations ont lieu à LIEU. Malgré la répression de la police locale, les dégâts sont importants.</string>
+    <string name="ROUTINE_EVENT_NMO_0_8">Vagues de recrutement</string>
+    <string name="ROUTINE_EVENT_NMO_0_8_description">Une vague de recrues est arrivée à LIEU. Cet apport de troupes fraiches est le bienvenue, et vous avez été renforcé de 5 unités !</string>
+    <string name="ROUTINE_EVENT_NMO_0_9">Rencontre du 3e type</string>
+    <string name="ROUTINE_EVENT_NMO_0_9_description">Un vaisseau spatial a surgit du ciel à LIEU. Impressionné, les habitants se sont mis à révérer ces voyageurs de l\'espace.</string>
+
 </resources>

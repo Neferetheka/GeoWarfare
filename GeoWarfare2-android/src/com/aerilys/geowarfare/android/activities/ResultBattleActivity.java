@@ -1,5 +1,6 @@
 package com.aerilys.geowarfare.android.activities;
 
+
 import org.json.JSONObject;
 
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.aerilys.geowarfare.android.R;
+import com.aerilys.geowarfare.android.models.Sector;
 import com.aerilys.geowarfare.android.tools.DataContainer;
 import com.aerilys.geowarfare.android.tools.TaskHelper;
 import com.googlecode.androidannotations.annotations.AfterViews;
@@ -70,6 +72,10 @@ public class ResultBattleActivity extends SherlockActivity
 				difference = unitsCount - difference;
 				stringToShare = getString(R.string.the_general) + DataContainer.getPlayerI().getLogin()
 						+ getString(R.string.has_conquest) + sectorName;
+				
+				DataContainer.getInstance().currentSector.setUnits(difference);
+				Sector sector = Sector.clone(DataContainer.getInstance().currentSector);
+				DataContainer.getPlayerI().getListSectors().add(sector);
 			}
 			else if (resultBattle.equals("w"))
 			{
@@ -80,7 +86,9 @@ public class ResultBattleActivity extends SherlockActivity
 						+ getString(R.string.has_conquest) + sectorName + getString(R.string.against_general)
 						+ DataContainer.getInstance().currentSector.getOwner();
 				
-				DashboardActivity.isPlayerProfileLoaded = false;
+				DataContainer.getInstance().currentSector.setUnits(difference);
+				Sector sector = Sector.clone(DataContainer.getInstance().currentSector);
+				DataContainer.getPlayerI().getListSectors().add(sector);
 			}
 			else if (resultBattle.equals("e"))
 			{

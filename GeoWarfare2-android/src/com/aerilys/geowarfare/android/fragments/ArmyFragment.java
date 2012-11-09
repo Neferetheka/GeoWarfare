@@ -33,6 +33,14 @@ public class ArmyFragment extends GeoFragment
 		super.onViewCreated(view, savedInstanceState);
 		isLoad = true;
 	}
+	
+	@Override
+	public void onResume()
+	{
+		super.onResume();
+		
+		datasLoaded();
+	}
 
 	@Override
 	public void datasLoaded()

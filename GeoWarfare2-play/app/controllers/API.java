@@ -282,11 +282,16 @@ public class API extends Controller
 
 		StringBuilder sb = new StringBuilder("[");
 
+		int i = 0;
 		for (GeoEvent event : player.listGeoEvents)
 		{
+			if(i > 32)
+				break;
+			
 			sb.append("{\"title\":\"" + event.title + "\", \"content\":\"" + event.content
 					+ "\", \"datePublication\":\"" + event.datePublication + "\", \"type\":\"" + event.geoEventType
 					+ "\" },");
+			i++;
 		}
 
 		String result = sb.toString();

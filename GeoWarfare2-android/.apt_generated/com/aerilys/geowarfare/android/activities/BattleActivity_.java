@@ -38,10 +38,10 @@ public final class BattleActivity_
     }
 
     private void afterSetContentView_() {
+        battleSectorLabel = ((TextView) findViewById(id.battleSectorLabel));
         battleUnitLabel = ((TextView) findViewById(id.battleUnitLabel));
         battleUnitEdit = ((EditText) findViewById(id.battleUnitEdit));
         battleSectorImage = ((ImageView) findViewById(id.battleSectorImage));
-        battleSectorLabel = ((TextView) findViewById(id.battleSectorLabel));
         bindDatas();
     }
 

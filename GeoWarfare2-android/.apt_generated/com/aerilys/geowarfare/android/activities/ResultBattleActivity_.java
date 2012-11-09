@@ -32,8 +32,8 @@ public final class ResultBattleActivity_
     }
 
     private void afterSetContentView_() {
-        lossBattleLabel = ((TextView) findViewById(id.lossBattleLabel));
         resultBattleSectorName = ((TextView) findViewById(id.resultBattleSectorName));
+        lossBattleLabel = ((TextView) findViewById(id.lossBattleLabel));
         resultBattleLabel = ((TextView) findViewById(id.resultBattleLabel));
         bindDatas();
     }

@@ -61,7 +61,7 @@ public class Global extends GlobalSettings
 						for (Sector sector : Sector.find.all())
 						{
 							int proba = rand.nextInt(101);
-							if (proba < 5 && sector.owner.length() > 1)
+							if (proba < 2 && sector.owner.length() > 1)
 							{
 								// Event
 								sector.generateEvent(rand);

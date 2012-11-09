@@ -1,10 +1,20 @@
 package com.aerilys.geowarfare.android.activities;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.util.Date;
 import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
@@ -16,6 +26,9 @@ import com.aerilys.geowarfare.android.fragments.GeoFragment;
 import com.aerilys.geowarfare.android.fragments.ProfileFragment;
 import com.aerilys.geowarfare.android.models.GeoEvent;
 import com.aerilys.geowarfare.android.models.Sector;
+import com.aerilys.geowarfare.android.models.Success;
+import com.aerilys.geowarfare.android.tools.Cache;
+import com.aerilys.geowarfare.android.tools.Converter;
 import com.aerilys.geowarfare.android.tools.DataContainer;
 import com.aerilys.geowarfare.android.tools.NetworkHelper;
 import com.aerilys.geowarfare.android.tools.TabManager;
@@ -33,6 +46,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.view.View;
 
 @EActivity(R.layout.activity_dashboard)
@@ -90,15 +104,15 @@ public class DashboardActivity extends SherlockFragmentActivity
 		else
 			updateUIPlayer();
 	}
-	
+
 	@Override
 	protected void onResume()
 	{
 		super.onResume();
-		if(DataContainer.getPlayerI().getKey() == null)
+		if (DataContainer.getPlayerI().getKey() == null)
 			this.finish();
-		
-		if(pager != null && !isPlayerProfileLoaded)
+
+		if (pager != null && !isPlayerProfileLoaded)
 		{
 			loadPlayerProfile();
 			setProgressBarIndeterminateVisibility(true);
@@ -128,7 +142,6 @@ public class DashboardActivity extends SherlockFragmentActivity
 		setProgressBarIndeterminateVisibility(false);
 		if (result != null)
 		{
-
 			try
 			{
 				JSONObject jsonReponse = new JSONObject(result);
@@ -150,11 +163,12 @@ public class DashboardActivity extends SherlockFragmentActivity
 
 					DataContainer.getPlayerI().getListSectors().add(sector);
 				}
-				
+
 				isPlayerProfileLoaded = true;
 
 				setProgressBarIndeterminateVisibility(true);
 				loadGeoEvents();
+				loadSuccess();
 
 				updateUIPlayer();
 			}
@@ -208,10 +222,112 @@ public class DashboardActivity extends SherlockFragmentActivity
 					event.init();
 				}
 
-				updateUIFromPageSelection(0); 
+				updateUIFromPageSelection(0);
 			}
 			catch (Exception e)
 			{
+				UIHelper.toastError(this, e);
+			}
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	@Background
+	protected void loadSuccess()
+	{
+		if (DataContainer.getInstance().listSuccess != null && DataContainer.getInstance().listSuccess.size() > 0)
+			return;
+		String result = null;
+		try
+		{
+			result = Cache.getItem(this, "successCache");
+
+			if (result == null)
+			{
+				String url = DataContainer.HOSTPUBLIC + "XML/Success.xml";
+				result = NetworkHelper.HttpRequest(url);
+
+				Date date = new Date();
+				date.setHours(date.getHours() + 48);
+				Cache.setitem(this, "successCache", result, date);
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		loadSuccessCompleted(result);
+	}
+
+	@UiThread
+	protected void loadSuccessCompleted(String result)
+	{
+		if (result == null)
+		{
+			UIHelper.toastConnexion(this);
+		}
+		else
+		{
+			try
+			{
+				result = result.replace("ï»¿", "");
+				DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+				DocumentBuilder builder = factory.newDocumentBuilder();
+				InputStream in = new ByteArrayInputStream(result.getBytes());
+				Document dom = builder.parse(in);
+				Element root = dom.getDocumentElement();
+				NodeList successSet = root.getChildNodes();
+				Node item;
+				Node successNode;
+				DataContainer.getInstance().listSuccess.clear();
+
+				for (int i = 0; i < successSet.getLength(); i++)
+				{
+					item = successSet.item(i);
+					if (item.getNodeName().toLowerCase().equals("success"))
+					{
+						Success success = new Success();
+						for (int j = 0; j < item.getChildNodes().getLength(); j++)
+						{
+							successNode = item.getChildNodes().item(j);
+							if (successNode.getNodeName().toLowerCase().equals("id"))
+								success.setId(Integer.parseInt(successNode.getTextContent()));
+							else if (successNode.getNodeName().toLowerCase().equals("nom"))
+								success.setNom(successNode.getTextContent());
+							else if (successNode.getNodeName().toLowerCase().equals("description"))
+								success.setDescription(successNode.getTextContent());
+							else if (successNode.getNodeName().toLowerCase().equals("objectif"))
+								success.setObjectif(successNode.getTextContent());
+							else if (successNode.getNodeName().toLowerCase().equals("ishidden"))
+								success.setHidden(Converter.convertStringToBool(successNode.getTextContent()));
+							else if (successNode.getNodeName().toLowerCase().equals("iselite"))
+								success.setElite(Converter.convertStringToBool(successNode.getTextContent()));
+							else if (successNode.getNodeName().toLowerCase().equals("ptsrecompense"))
+								success.setPtsRecompense(Integer.parseInt(successNode.getTextContent()));
+						}
+						try
+						{
+							int id = this.getResources().getIdentifier(
+									success.getNom().toLowerCase().replace(" ", "_").replace("é", "e").replace("'", "")
+											.replace("è", "e").replace("ô", "o").replace("î", "i"), "drawable",
+									this.getPackageName());
+							if (i > 0)
+								success.Image = id;
+							else
+								success.Image = R.drawable.question;
+						}
+						catch (Exception e)
+						{
+							success.Image = R.drawable.question;
+						}
+						DataContainer.getInstance().listSuccess.add(success);
+					}
+				}
+			}
+			catch (Exception e)
+			{
+				Log.d("GeoError", "Erreur de chargement des fichiers ! " + e.getMessage());
 				UIHelper.toastError(this, e);
 			}
 		}
@@ -252,6 +368,11 @@ public class DashboardActivity extends SherlockFragmentActivity
 		TabManager.navigate(this, SectorActivity_.class);
 	}
 
+	public void successClick(View v)
+	{
+		TabManager.navigate(this, SuccessActivity_.class);
+	}
+
 	public static class DashboardFragmentAdapter extends FragmentPagerAdapter
 	{
 		ActivitiesFragment activitiesFragment = new ActivitiesFragment();
@@ -277,7 +398,7 @@ public class DashboardActivity extends SherlockFragmentActivity
 				return activitiesFragment;
 			else if (position == 1)
 				return armyFragment;
-			else if(position == 2)
+			else if (position == 2)
 				return allyFragment;
 			else if (position == 3)
 				return profileFragment;
